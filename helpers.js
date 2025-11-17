@@ -1,6 +1,6 @@
 import { no_worker_in_list, worker_list } from "./globalVariables.js";
 import { show_edit_worker_modal, worker_list_arr } from "./script.js";
-import { delete_modal, experience_template, list_worker, profile, room_worker } from "./templates.js";
+import { available_workers, delete_modal, experience_template, list_worker, profile, room_worker } from "./templates.js";
 
 export const add_experience = (arr, parent, class_name) => {
 
@@ -115,7 +115,31 @@ const show_delete_worker_modal = (worker, div) => {
     document.body.appendChild(delete_worker_modal);
 };
 
+export const show_available_workers_list = (workers, room) => {
+    let div = document.createElement("div");
+    div.id = "available-workers-list";
+    div.className = "w-screen h-screen bg-black absolute top-0 left-0 bg-opacity-60 flex justify-center items-center"
+
+    div.innerHTML = available_workers(workers);
+
+    let close_modal = div.querySelector("#close-modal");
+    close_modal.addEventListener("click", () => {
+        div.remove();
+    });
+
+    let worker_containers = div.querySelectorAll(".worker");
+    worker_containers.forEach((worker, i) => {
+        worker.addEventListener("click", () => {
+            add_worker_to_room(workers[i], room);
+            div.remove();
+        });
+    });
+
+    document.body.appendChild(div);
+};
+
 export const room_btn_handler = (e) => {
     let id = e.target.parentElement.parentElement.id;
     let workers = worker_list_arr.filter((worker) => room_by_roles[id].includes(worker.role));
+    show_available_workers_list(workers, id);
 };
