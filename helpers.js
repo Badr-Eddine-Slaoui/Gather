@@ -1,6 +1,6 @@
 import { no_worker_in_list, worker_list } from "./globalVariables.js";
 import { show_edit_worker_modal, worker_list_arr } from "./script.js";
-import { delete_modal, experience_template, list_worker, profile } from "./templates.js";
+import { delete_modal, experience_template, list_worker, profile, room_worker } from "./templates.js";
 
 export const add_experience = (arr, parent, class_name) => {
 
@@ -113,4 +113,9 @@ const show_delete_worker_modal = (worker, div) => {
     });
 
     document.body.appendChild(delete_worker_modal);
+};
+
+export const room_btn_handler = (e) => {
+    let id = e.target.parentElement.parentElement.id;
+    let workers = worker_list_arr.filter((worker) => room_by_roles[id].includes(worker.role));
 };

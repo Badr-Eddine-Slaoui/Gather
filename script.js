@@ -1,4 +1,4 @@
-import { add_experience_btn, add_worker_btn, add_worker_form, add_worker_modal, close_add_worker_modal, experiences, img, no_worker_in_list } from "./globalVariables.js";
+import { add_experience_btn, add_worker_btn, add_worker_form, add_worker_modal, close_add_worker_modal, experiences, img, no_worker_in_list, room_btns } from "./globalVariables.js";
 import { add_experience, add_worker_to_list, load_worker_list, update_worker_list } from "./helpers.js";
 import { update_modal } from "./templates.js";
 import { validate_age, validate_email, validate_enter_date, validate_experiences, validate_leave_date, validate_name, validate_phone, validate_role } from "./validators.js";
@@ -223,3 +223,7 @@ export const show_edit_worker_modal = (worker) => {
 
     document.body.appendChild(edit_worker_modal);
 }
+
+room_btns.forEach(room_btn => {
+    room_btn.addEventListener("click", room_btn_handler);
+});

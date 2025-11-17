@@ -43,3 +43,5 @@ export let add_worker_form = document.getElementById("add-worker-form");
 export let add_experience_btn = document.getElementById("add-experience-btn");
 export let experiences = document.getElementById("experiences");
 export let img = document.querySelector("#add-worker-modal #photo");
+export let plan = document.getElementById("plan");
+export let room_btns = plan.querySelectorAll(".add-worker-btn");
