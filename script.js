@@ -56,6 +56,12 @@ const add_worker_to_list = (worker) => {
         show_delete_worker_modal(worker, div);
     });
 
+    div.addEventListener("dragstart", (e) => {
+        handle_drag_start(e, worker);
+    });
+
+    div.addEventListener("dragend", handle_drag_end);
+
     worker_list.appendChild(div);
 };
 
@@ -174,6 +180,12 @@ const switch_worker_with_btn = (worker, room, container, btn) => {
         show_worker_profile(worker);
     });
 
+    worker_div.addEventListener("dragstart", (e) => {
+        handle_drag_start(e, worker, room);
+    });
+
+    worker_div.addEventListener("dragend", handle_drag_end);
+
     container.insertBefore(worker_div, btn);
     btn.remove();
 };
@@ -278,6 +290,31 @@ const randomize_workers_in_rooms = () => {
     localStorage.setItem("worker_list_arr", JSON.stringify(worker_list_arr));
 
     update_worker_list(worker_list_arr);
+}
+
+const handle_drag_start = (e, worker, room = "") => {
+    e.dataTransfer.setData("worker", JSON.stringify(worker));
+    e.dataTransfer.setData("room", room);
+    available_rooms.forEach(r => {
+        let room = document.getElementById(r);
+        let length = JSON.parse(localStorage.getItem(`${r.replace("-", "_")}_workers`) || "[]").length;
+        room.classList.add("bg-opacity-30");
+        if (room_by_roles[room.id].includes(worker.role) && length < room_limits[r]) {
+            room.classList.remove("bg-red-400");
+            room.classList.add("bg-green-400");
+        }else {
+            room.classList.remove("bg-green-400");
+            room.classList.add("bg-red-400");
+        }
+    });
+}
+
+const handle_drag_end = (e) => {
+    e.preventDefault();
+    available_rooms.forEach(r => {
+        let room = document.getElementById(r);
+        room.classList.remove("bg-green-400", "bg-red-400", "bg-opacity-30");
+    });
 }
 
 
@@ -506,8 +543,42 @@ room_btns.forEach(room_btn => {
 });
 
 available_rooms.forEach(r => {
+    let room = document.getElementById(r);
+
     load_room_workers(r, room_limits[r]);
+
+    room.addEventListener("dragover", (e) => {
+        e.preventDefault();
+    });
+
+    room.addEventListener("drop", (e) => {
+        e.preventDefault();
+        let room_arr = JSON.parse(localStorage.getItem(`${r.replace("-", "_")}_workers`) || "[]");
+        if (room_arr.length < room_limits[r]) {
+            let worker = JSON.parse(e.dataTransfer.getData("worker"));
+            let room = e.dataTransfer.getData("room");
+            if (room) {
+                let remove_worker = document.getElementById(`remove-worker-${worker.id}`);
+                remove_worker.click();
+            }
+            add_worker_to_room(worker, r);
+        }
+    });
 })
+
+worker_list.addEventListener("dragover", (e) => {
+    e.preventDefault();
+});
+
+worker_list.addEventListener("drop", (e) => {
+    e.preventDefault();
+    let worker = JSON.parse(e.dataTransfer.getData("worker"));
+    let room = e.dataTransfer.getData("room");
+    if (room) {
+        let remove_worker = document.getElementById(`remove-worker-${worker.id}`);
+        remove_worker.click();
+    }
+});
 
 search.addEventListener("input", () => {
     update_worker_list(filter_workers(search.value, filter.value));
