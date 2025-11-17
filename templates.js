@@ -227,3 +227,37 @@ export const delete_modal = () => {
         </div>
     `
 }
+
+export const room_worker = (worker) => {
+    return `
+        <div id="remove-worker-${worker.id}" class="absolute top-[2px] right-[2px] rounded-md w-[2vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">x</div>
+        <img src="${worker.photo}" alt="${worker.name}" class="bg-red-500 w-[2vh] h-[2vh] rounded-full"></img>
+        <p class="text-slate-500 w-[8vh] text-[0.8rem] font-bold truncate overflow-hidden text-ellipsis">${worker.name}</p>
+    `;
+}
+
+export const available_workers = (workers) => {
+    return `
+        <div class="w-1/3 h-[90vh] bg-white rounded-lg relative">
+            <div id="close-modal" class="absolute top-1 right-1 rounded-lg w-[5vh] h-[5vh] bg-red-500 text-white flex justify-center items-center font-extrabold text-[1.5rem] cursor-pointer">x</div>
+            <div class="w-full h-[10vh] flex items-center justify-center gap-x-2">
+                <h1 class="text-[2rem] font-extrabold text-slate-500">Available Workers</h1>
+            </div>
+            <div class="w-full h-[80vh] overflow-y-scroll">
+                ${
+                    workers.length > 0 ? workers.map((worker) => {
+                        return `
+                            <div title="${worker.role}" class="worker w-[90%] mx-auto flex items-center gap-x-5 border border-slate-500 p-2 rounded-lg cursor-pointer my-5">
+                                <img src="${worker.photo}" alt="${worker.name}" class="w-[8vh] h-[8vh] rounded-full"></img>
+                                <div>
+                                    <p class="text-slate-500 text-[1.5rem] font-bold">${worker.name}</p>
+                                    <p class="text-[1rem] font-bold capitalize">${worker.role}</p>
+                                </div>
+                            </div>
+                        `;
+                    }).join("") : `<div class="w-full h-[10vh] flex justify-center items-center text-[2rem] font-extrabold text-slate-500">No workers found</div>`
+                }
+            </div>
+        </div>
+    `;
+}
