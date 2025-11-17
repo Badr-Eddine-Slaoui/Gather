@@ -1,4 +1,4 @@
-import { add_experience_btn, add_worker_btn, add_worker_form, add_worker_modal, available_rooms, close_add_worker_modal, experiences, img, room_btns, room_limits, no_worker_in_list, room_by_roles, worker_list } from "./globalVariables.js";
+import { add_experience_btn, add_worker_btn, add_worker_form, add_worker_modal, available_rooms, close_add_worker_modal, experiences, img, room_btns, room_limits, no_worker_in_list, room_by_roles, worker_list, search, filter } from "./globalVariables.js";
 import { available_workers, delete_modal, experience_template, list_worker, profile, room_worker,update_modal } from "./templates.js";
 import { validate_age, validate_email, validate_enter_date, validate_experiences, validate_leave_date, validate_name, validate_phone, validate_role } from "./validators.js";
 
@@ -222,6 +222,17 @@ const load_room_workers = (room, limit) => {
         }
     }
 };
+
+const filter_workers = (search = "", role = "") => {
+    let filtered_workers = worker_list_arr;
+    if (search) {
+        filtered_workers = filtered_workers.filter((worker) => worker.name.toLowerCase().includes(search.toLowerCase()));
+    }
+    if (role) {
+        filtered_workers = filtered_workers.filter((worker) => worker.role === (role === "all" ? worker.role : role));
+    }
+    return filtered_workers;
+}
 
 
 //Main Functions
@@ -451,3 +462,11 @@ room_btns.forEach(room_btn => {
 available_rooms.forEach(r => {
     load_room_workers(r, room_limits[r]);
 })
+
+search.addEventListener("input", () => {
+    update_worker_list(filter_workers(search.value, filter.value));
+});
+
+filter.addEventListener("change", () => {
+    update_worker_list(filter_workers(search.value, filter.value));
+});

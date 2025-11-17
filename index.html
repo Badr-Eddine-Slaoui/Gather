@@ -9,9 +9,22 @@
 <body class="bg-gray-500 ">
     <div class="w-screen h-screen pe-5 flex justify-center items-center gap-x-5">
         <div id="worker-list" class="w-[20%] h-screen self-start overflow-y-scroll flex flex-col py-5 gap-y-5">
+            <div class="flex justify-around items-center">
+                <input placeholder="Search..." class="w-[70%] border border-slate-500 rounded-md p-2" id="search" type="text">
+                <select class="w-[25%] border border-slate-500 rounded-md p-2" name="role" id="filter">
+                    <option value="all">All</option>
+                    <option value="receptionist">Receptionist</option>
+                    <option value="it">IT</option>
+                    <option value="security">Security guard</option>
+                    <option value="manager">Manager</option>
+                    <option value="cleaner">Cleaner</option>
+                    <option value="visiter">Visiter</option>
+                </select>
+            </div>
             <h1 class="text-[2rem] font-extrabold text-white text-center">Workers List</h1>
             <div class="w-10/12 mx-auto flex justify-around items-center">
                 <button id="add-worker-btn" class="w-5/12 bg-orange-400 py-3 text-[1.2rem] text-white font-bold rounded-md">Add Worker</button>
+                <button id="randomize" class="w-5/12 bg-blue-400 py-3 text-[1.2rem] text-white font-bold rounded-md">Randomize</button>
             </div>
             <p id="no-worker-in-list" class="text-orange-400 text-center font-bold my-20 text-[1.5rem] hidden">There's No Workers Yet</p>
         </div>
