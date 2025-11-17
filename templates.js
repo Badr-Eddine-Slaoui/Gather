@@ -227,3 +227,11 @@ export const delete_modal = () => {
         </div>
     `
 }
+
+export const room_worker = (worker) => {
+    return `
+        <div id="remove-worker-${worker.id}" class="absolute top-[2px] right-[2px] rounded-md w-[2vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">x</div>
+        <img src="${worker.photo}" alt="${worker.name}" class="bg-red-500 w-[2vh] h-[2vh] rounded-full"></img>
+        <p class="text-slate-500 w-[8vh] text-[0.8rem] font-bold truncate overflow-hidden text-ellipsis">${worker.name}</p>
+    `;
+}
