@@ -1,6 +1,6 @@
 import { no_worker_in_list, worker_list } from "./globalVariables.js";
 import { show_edit_worker_modal, worker_list_arr } from "./script.js";
-import { experience_template, list_worker, profile } from "./templates.js";
+import { delete_modal, experience_template, list_worker, profile } from "./templates.js";
 
 export const add_experience = (arr, parent, class_name) => {
 
@@ -41,10 +41,16 @@ export const add_worker_to_list = (worker) => {
         show_worker_profile(worker);
     });
 
-    let edit_worker = div.querySelector("#edit-worker");
+    let edit_worker = div.querySelector(`#edit-worker-${worker.id}`);
     edit_worker.addEventListener("click", (e) => {
         e.stopPropagation();
         show_edit_worker_modal(worker, div);
+    });
+
+    let remove_worker = div.querySelector(`#remove-worker-${worker.id}`);
+    remove_worker.addEventListener("click", (e) => {
+        e.stopPropagation();
+        show_delete_worker_modal(worker, div);
     });
 
     worker_list.appendChild(div);
@@ -81,4 +87,30 @@ export const update_worker_list = (arr = worker_list_arr) => {
         worker.remove();
     });
     load_worker_list(arr);
+};
+
+const show_delete_worker_modal = (worker, div) => {
+    let delete_worker_modal = document.createElement("div");
+    delete_worker_modal.className = "w-screen h-screen bg-black absolute top-0 left-0 bg-opacity-60 flex justify-center items-center";
+    delete_worker_modal.id = "delete-worker-modal";
+    delete_worker_modal.innerHTML = delete_modal();
+
+    let delete_worker_btn = delete_worker_modal.querySelector("#delete-worker-btn")
+    delete_worker_btn.addEventListener("click", () => {
+        let index = worker_list_arr.findIndex((w) => w.id === worker.id);
+        worker_list_arr.splice(index, 1);
+        localStorage.setItem("worker_list_arr",JSON.stringify(worker_list_arr));
+        div.remove();
+        if (worker_list_arr.length === 0) {
+            no_worker_in_list.classList.remove("hidden");
+        }
+        delete_worker_modal.remove();
+    });
+
+    let cancel_delete_worker_btn = delete_worker_modal.querySelector("#cancel-delete-worker-btn");
+    cancel_delete_worker_btn.addEventListener("click", () => {
+        delete_worker_modal.remove();
+    });
+
+    document.body.appendChild(delete_worker_modal);
 };

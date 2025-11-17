@@ -1,12 +1,12 @@
 export const list_worker = (worker) => {
     return `
-        <div id="remove-worker" class="absolute top-1 right-1 rounded-md w-[2vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">x</div>
+        <div id="remove-worker-${worker.id}" class="absolute top-1 right-1 rounded-md w-[2vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">x</div>
         <img src="${worker.photo}" alt="${worker.name}" class="w-[5vh] h-[5vh] rounded-full"></img>
         <div>
             <p class="text-slate-500 w-[25vh] text-[1.2rem] font-bold truncate overflow-hidden text-ellipsis capitalize">${worker.name}</p>
             <p class="text-[1rem] font-bold truncate overflow-hidden text-ellipsis capitalize">${worker.role}</p>
         </div>
-        <div id="edit-worker" class="absolute bottom-1 right-1 rounded-md w-[5vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">Edit</div>
+        <div id="edit-worker-${worker.id}" class="absolute bottom-1 right-1 rounded-md w-[5vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">Edit</div>
     `
 }
 
@@ -212,6 +212,18 @@ export const update_modal = (worker) => {
                     <button type="submit" class="bg-blue-400 py-3 px-5 text-[1.2rem] text-white font-bold rounded-md">Submit</button>
                 </div>
             </form>
+        </div>
+    `
+}
+
+export const delete_modal = () => {
+    return `
+        <div class="w-1/3 h-[50vh] bg-white rounded-lg relative flex flex-col gap-y-20 justify-center items-center">
+            <h2 class="text-center text-[2rem] font-extrabold">Are you sure you want to delete this worker?</h2>
+            <div class="flex justify-between items-center gap-x-10">
+                <button id="delete-worker-btn" class="bg-red-500 py-3 px-5 text-[1.2rem] text-white font-bold rounded-md">Delete</button>
+                <button id="cancel-delete-worker-btn" class="bg-blue-500 py-3 px-5 text-[1.2rem] text-white font-bold rounded-md">Cancel</button>
+            </div>
         </div>
     `
 }
