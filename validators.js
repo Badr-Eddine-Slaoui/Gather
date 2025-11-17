@@ -21,3 +21,28 @@ export const validate_name = (name, id) => {
         }
     }
 }
+
+export const validate_age = (age, id) => {
+    let age_err = document.getElementById(id);
+    let age_regex = /^[0-9]{2,3}$/;
+    if (!age) {
+        age_err.classList.remove("hidden");
+        age_err.textContent = "Age is required";
+        return false;
+    } else {
+        if(!age_regex.test(age)) {
+            age_err.classList.remove("hidden");
+            age_err.textContent = "Age must contain just numbers, at least 2 characters";
+            return false;
+        } else {
+            if(age < 18 || age > 100) {
+                age_err.classList.remove("hidden");
+                age_err.textContent = "Age must be between 18 and 100";
+                return false;
+            } else {
+                age_err.classList.add("hidden");
+                return true;
+            }
+        }
+    }
+}
