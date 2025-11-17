@@ -64,3 +64,22 @@ export const validate_role = (role, id) => {
         }
     }
 }
+
+export const validate_email = (email, id) => {
+    let email_err = document.getElementById(id);
+    let email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!email) {
+        email_err.classList.remove("hidden");
+        email_err.textContent = "Email is required";
+        return false;
+    } else {
+        if(!email_regex.test(email)) {
+            email_err.classList.remove("hidden");
+            email_err.textContent = "Email is not valid";
+            return false;
+        } else {
+            email_err.classList.add("hidden");
+            return true;
+        }
+    }
+}
