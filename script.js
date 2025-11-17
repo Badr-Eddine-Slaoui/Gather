@@ -105,3 +105,16 @@ img.addEventListener("input", () => {
         preview.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
     }
 });
+
+const load_worker_list = (arr = worker_list_arr) => {
+    if (arr.length > 0) {
+        no_worker_in_list.classList.add("hidden");
+        arr.forEach((worker) => {
+        add_worker_to_list(worker);
+        });
+    } else {
+        no_worker_in_list.classList.remove("hidden");
+    }
+};
+
+load_worker_list();
