@@ -1,4 +1,5 @@
-import { worker_list } from "./globalVariables.js";
+import { no_worker_in_list, worker_list } from "./globalVariables.js";
+import { show_edit_worker_modal, worker_list_arr } from "./script.js";
 import { experience_template, list_worker, profile } from "./templates.js";
 
 export const add_experience = (arr, parent, class_name) => {
@@ -40,6 +41,12 @@ export const add_worker_to_list = (worker) => {
         show_worker_profile(worker);
     });
 
+    let edit_worker = div.querySelector("#edit-worker");
+    edit_worker.addEventListener("click", (e) => {
+        e.stopPropagation();
+        show_edit_worker_modal(worker, div);
+    });
+
     worker_list.appendChild(div);
 };
 
@@ -55,4 +62,23 @@ export const show_worker_profile = (worker) => {
     });
 
     document.body.appendChild(worker_profile);
+};
+
+export const load_worker_list = (arr = worker_list_arr) => {
+    if (arr.length > 0) {
+        no_worker_in_list.classList.add("hidden");
+        arr.forEach((worker) => {
+        add_worker_to_list(worker);
+        });
+    } else {
+        no_worker_in_list.classList.remove("hidden");
+    }
+};
+
+export const update_worker_list = (arr = worker_list_arr) => {
+    let workers = worker_list.querySelectorAll(".worker");
+    workers.forEach((worker) => {
+        worker.remove();
+    });
+    load_worker_list(arr);
 };
