@@ -7,6 +7,32 @@ export let available_roles = [
     "receptionist"
 ];
 
+export let available_rooms = [
+    "meeting-room",
+    "reception-room",
+    "servers-room",
+    "security-room",
+    "rest-room",
+    "archive-room"
+];
+
+export let room_limits = {
+    "meeting-room": 6,
+    "reception-room": 6,
+    "servers-room": 4,
+    "security-room": 1,
+    "rest-room": 2,
+    "archive-room": 2
+};
+
+export let room_by_roles = {
+    "meeting-room": ["manager", "receptionist", "cleaner"],
+    "reception-room": ["receptionist", "visiter", "manager", "cleaner"],
+    "servers-room": ["it", "manager", "cleaner"],
+    "security-room": ["security", "manager", "cleaner"],
+    "rest-room": ["cleaner", "visiter", "manager", "receptionist", "it", "security"],
+    "archive-room": ["manager", "receptionist"]
+};
 
 export let worker_list = document.getElementById("worker-list");
 export let no_worker_in_list = document.getElementById("no-worker-in-list");
