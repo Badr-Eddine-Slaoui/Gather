@@ -49,6 +49,10 @@ export const show_worker_profile = (worker) => {
     worker_profile.id = "worker-profile-modal";
     worker_profile.innerHTML = profile(worker);
 
+    let close_modal = worker_profile.querySelector("#close-modal");
+    close_modal.addEventListener("click", () => {
+        worker_profile.remove();
+    });
 
     document.body.appendChild(worker_profile);
 };
