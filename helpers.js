@@ -1,4 +1,4 @@
-import { experience_template } from "./templates.js";
+import { experience_template, list_worker } from "./templates.js";
 
 export const add_experience = (arr, parent, class_name) => {
 
@@ -26,3 +26,14 @@ export const add_experience = (arr, parent, class_name) => {
 
     parent.appendChild(experience);
 }
+
+export const add_worker_to_list = (worker) => {
+    let div = document.createElement("div");
+    div.setAttribute("draggable", "true");
+    div.id = `worker-${worker.id}`;
+    div.className = "worker w-10/12 mx-auto h-[9vh] flex gap-x-3 p-1 px-2 items-center rounded-lg shadow-lg bg-white border border-orange-400 cursor-pointer relative";
+    div.title = worker.role;
+    div.innerHTML = list_worker(worker);
+    
+    worker_list.appendChild(div);
+};
