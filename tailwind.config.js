@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'plan': "url('./images/plan.jpg')",
+        'plan': "url('../images/plan.jpg')",
       },
       screens: {
         "2xs": "375px",
