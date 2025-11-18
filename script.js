@@ -4,6 +4,203 @@ import { validate_age, validate_email, validate_enter_date, validate_experiences
 
 let worker_list_arr = JSON.parse(localStorage.getItem("worker_list_arr") || "[]");
 
+if(worker_list_arr.length === 0) {
+    let fakeData = [
+      {
+        id: 1763297001001,
+        name: "Imane Rami",
+        age: "24",
+        role: "manager",
+        email: "imane.rami@example.com",
+        phone: "0612345678",
+        enter_date: "2025-10-01T09:00",
+        leave_date: "2026-04-01T17:00",
+        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        experiences_arr: [
+          {
+            title: "Assistant Manager",
+            company: "Maroc Telecom",
+            start_date: "2023-03-01T09:00",
+            end_date: "2024-02-10T17:00",
+          },
+        ],
+      },
+      {
+        id: 1763297001002,
+        name: "Youssef Idrissi",
+        age: "27",
+        role: "it",
+        email: "youssef.idrissi@example.com",
+        phone: "0678994411",
+        enter_date: "2025-09-12T10:00",
+        leave_date: "2026-05-02T18:00",
+        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        experiences_arr: [
+          {
+            title: "IT Support",
+            company: "Inwi",
+            start_date: "2023-02-01T09:00",
+            end_date: "2025-08-20T17:00",
+          },
+        ],
+      },
+      {
+        id: 1763297001003,
+        name: "Sara Kabbaj",
+        age: "22",
+        role: "receptionist",
+        email: "sara.kabbaj@example.com",
+        phone: "0700112233",
+        enter_date: "2025-09-01T08:00",
+        leave_date: "2025-12-20T16:00",
+        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        experiences_arr: [
+          {
+            title: "Front Desk Assistant",
+            company: "Atlas Hotels",
+            start_date: "2024-04-01T08:00",
+            end_date: "2024-09-10T17:00",
+          },
+        ],
+      },
+      {
+        id: 1763297001004,
+        name: "Omar Benali",
+        age: "29",
+        role: "security",
+        email: "omar.benali@example.com",
+        phone: "0677445566",
+        enter_date: "2025-03-01T06:00",
+        leave_date: "2025-12-01T14:00",
+        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        experiences_arr: [
+          {
+            title: "Security Guard",
+            company: "Marjane",
+            start_date: "2021-01-01T06:00",
+            end_date: "2023-05-10T15:00",
+          },
+        ],
+      },
+      {
+        id: 1763297001005,
+        name: "Amina Fadili",
+        age: "23",
+        role: "cleaner",
+        email: "amina.fadili@example.com",
+        phone: "0622113344",
+        enter_date: "2025-04-20T07:00",
+        leave_date: "2026-01-01T14:00",
+        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        experiences_arr: [
+          {
+            title: "Cleaning Staff",
+            company: "Hospital Privé",
+            start_date: "2023-01-01T07:00",
+            end_date: "2024-02-10T16:00",
+          },
+        ],
+      },
+      {
+        id: 1763297001006,
+        name: "Adil Benhani",
+        age: "26",
+        role: "it",
+        email: "adil.benhani@example.com",
+        phone: "0699887766",
+        enter_date: "2025-07-01T09:00",
+        leave_date: "2026-02-01T17:00",
+        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        experiences_arr: [
+          {
+            title: "Network Technician",
+            company: "OCP",
+            start_date: "2022-11-01T09:00",
+            end_date: "2024-07-15T17:00",
+          },
+          {
+            title: "System Admin",
+            company: "CGI",
+            start_date: "2024-08-01T09:00",
+            end_date: "2025-06-20T17:00",
+          },
+        ],
+      },
+      {
+        id: 1763297001007,
+        name: "Nadia Toumi",
+        age: "30",
+        role: "visiter",
+        email: "nadia.toumi@example.com",
+        phone: "0655443322",
+        enter_date: "2025-11-10T14:00",
+        leave_date: "2025-11-10T17:00",
+        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        experiences_arr: [],
+      },
+      {
+        id: 1763297001009,
+        name: "Aya El Fassi",
+        age: "25",
+        role: "receptionist",
+        email: "aya.fassi@example.com",
+        phone: "0700332211",
+        enter_date: "2025-09-15T08:00",
+        leave_date: "2026-01-10T17:00",
+        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        experiences_arr: [
+          {
+            title: "Receptionist",
+            company: "Ibis",
+            start_date: "2023-03-01T08:00",
+            end_date: "2024-07-01T17:00",
+          },
+        ],
+      },
+      {
+        id: 1763297001010,
+        name: "Khalid Marzouki",
+        age: "32",
+        role: "cleaner",
+        email: "khalid.marzouki@example.com",
+        phone: "0644332211",
+        enter_date: "2025-01-05T07:00",
+        leave_date: "2025-08-28T15:00",
+        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        experiences_arr: [
+          {
+            title: "Building Cleaner",
+            company: "Aradei Group",
+            start_date: "2021-06-01T07:00",
+            end_date: "2024-12-01T15:00",
+          },
+        ],
+      },
+      {
+        id: 1763297001008,
+        name: "Hassan El Idrissi",
+        age: "32",
+        role: "security",
+        email: "hassan.idrissi@example.com",
+        phone: "0644556677",
+        enter_date: "2025-01-05T07:00",
+        leave_date: "2025-11-28T15:00",
+        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        experiences_arr: [
+          {
+            title: "Logistics Security",
+            company: "Aramex",
+            start_date: "2020-02-01T07:00",
+            end_date: "2023-09-10T15:00",
+          },
+        ],
+      },
+    ];
+
+    localStorage.setItem("worker_list_arr", JSON.stringify(fakeData));
+    location.reload();
+}
+
 //Helpers
 const add_experience = (arr, parent, class_name) => {
 
@@ -58,6 +255,22 @@ const add_worker_to_list = (worker) => {
     });
 
     div.addEventListener("dragstart", (e) => {
+        const ghostCard = div.cloneNode(true);
+        ghostCard.style.width = `${div.offsetWidth / 1.6}px`;
+        ghostCard.style.height = `${div.offsetHeight}px`;
+
+        document.body.appendChild(ghostCard);
+
+        e.dataTransfer?.setDragImage(
+            ghostCard,
+            ghostCard.offsetWidth / 2,
+            ghostCard.offsetHeight / 2
+        );
+
+        setTimeout(() => {
+            document.body.removeChild(ghostCard);
+        }, 0);
+
         handle_drag_start(e, worker);
     });
 
@@ -557,12 +770,14 @@ available_rooms.forEach(r => {
         let room_arr = JSON.parse(localStorage.getItem(`${r.replace("-", "_")}_workers`) || "[]");
         if (room_arr.length < room_limits[r]) {
             let worker = JSON.parse(e.dataTransfer.getData("worker"));
-            let room = e.dataTransfer.getData("room");
-            if (room) {
-                let remove_worker = document.getElementById(`remove-worker-${worker.id}`);
-                remove_worker.click();
+            if (room_by_roles[room.id].includes(worker.role)) {
+                let room = e.dataTransfer.getData("room");
+                if (room) {
+                    let remove_worker = document.getElementById(`remove-worker-${worker.id}`);
+                    remove_worker.click();
+                }
+                add_worker_to_room(worker, r);
             }
-            add_worker_to_room(worker, r);
         }
     });
 })
