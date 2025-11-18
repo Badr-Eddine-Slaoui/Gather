@@ -63,6 +63,7 @@ The goal is to provide a smooth, intuitive, and responsive interface where emplo
 
 ## 📂 Project Structure
 
+```bash
 /
 ├── images/
 │ └── plan.jpg
@@ -80,6 +81,7 @@ The goal is to provide a smooth, intuitive, and responsive interface where emplo
 ├── package.json
 ├── package-lock.json
 └── tailwindcss.config.js
+```
 
 ---
 
