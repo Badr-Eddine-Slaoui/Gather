@@ -1,12 +1,12 @@
 export const list_worker = (worker) => {
     return `
-        <div id="remove-worker-${worker.id}" class="absolute top-1 right-1 rounded-md w-[2vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">x</div>
+        <div id="remove-worker-${worker.id}" class="close absolute top-1 right-1 rounded-md w-[2vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">x</div>
         <img src="${worker.photo}" alt="${worker.name}" class="w-[5vh] h-[5vh] rounded-full"></img>
         <div>
-            <p class="text-slate-500 w-[25vh] text-[1.2rem] font-bold truncate overflow-hidden text-ellipsis capitalize">${worker.name}</p>
-            <p class="text-[1rem] font-bold truncate overflow-hidden text-ellipsis capitalize">${worker.role}</p>
+            <p class="name text-slate-500 w-[25vh] text-[1.2rem] font-bold truncate overflow-hidden text-ellipsis capitalize">${worker.name}</p>
+            <p class="role text-[1rem] font-bold truncate overflow-hidden text-ellipsis capitalize">${worker.role}</p>
         </div>
-        <div id="edit-worker-${worker.id}" class="absolute bottom-1 right-1 rounded-md w-[5vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">Edit</div>
+        <div id="edit-worker-${worker.id}" class="edit absolute bottom-1 right-1 rounded-md w-[5vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">Edit</div>
     `
 }
 
@@ -42,19 +42,19 @@ export const experience_template = (index) => {
 
 export const profile = (worker) => {
     return `
-        <div class="w-1/2 h-[90vh] bg-white rounded-lg flex flex-col items-center gap-y-5 overflow-y-scroll relative">
+        <div class="modal w-1/2 h-[90vh] bg-white rounded-lg flex flex-col items-center gap-y-5 overflow-y-scroll relative">
             <div id="close-modal" class="absolute top-1 right-1 rounded-lg w-[5vh] h-[5vh] bg-red-500 text-white flex justify-center items-center font-extrabold text-[1.5rem] cursor-pointer">x</div>
             <h1 class="text-[2rem] text-center mt-10 mb-5 font-extrabold text-orange-400">Worker Profile</h1>
             <div class="w-[90%] flex items-center gap-x-5">
                 <img src="${worker.photo}" alt="${worker.name}" class="w-[15vh] h-[15vh] rounded-full"></img>
                 <div class="flex flex-col gap-y-2">
-                    <p class="text-slate-500 text-[1.5rem] font-bold">${worker.name}</p>
-                    <p class="text-[1.2rem]">
+                    <p class="name text-slate-500 text-[1.5rem] font-bold">${worker.name}</p>
+                    <p class="age-role text-[1.2rem]">
                         <span>${worker.age} years</span> - <span>${worker.role}</span>
                     </p>
                 </div>
             </div>
-            <div class="w-[90%] flex justify-between items-center text-[1.2rem]">
+            <div class="row w-[90%] flex justify-between items-center text-[1.2rem]">
                 <div class="w-full flex gap-x-2 text-[1.2rem]">
                     <p class="font-bold text-slate-500">Email:</p>
                     <p>${worker.email}</p>
@@ -64,7 +64,7 @@ export const profile = (worker) => {
                     <p>${worker.phone}</p>
                 </div>
             </div>
-            <div class="w-[90%] flex justify-between items-center text-[1.2rem]">
+            <div class="row w-[90%] flex justify-between items-center text-[1.2rem]">
                 <div class="w-full flex gap-x-2 text-[1.2rem]">
                     <p class="font-bold text-slate-500">Start Date:</p>
                     <p>${new Date(worker.enter_date).toLocaleDateString("en-US")}</p>
@@ -82,7 +82,7 @@ export const profile = (worker) => {
                             worker.experiences_arr.map(experience => {
                                 return `
                                     <div class="w-full flex flex-col gap-y-5 border-b border-slate-500 pb-5">
-                                        <div class="w-full flex justify-between items-center text-[1.2rem]">
+                                        <div class="row w-full flex justify-between items-center text-[1.2rem]">
                                             <div class="w-full flex gap-x-2 text-[1.2rem]">
                                                 <p class="font-bold text-slate-500">Title:</p>
                                                 <p>${experience.title}</p>
@@ -92,7 +92,7 @@ export const profile = (worker) => {
                                                 <p>${experience.company}</p>
                                             </div>
                                         </div>
-                                        <div class="w-full flex justify-between items-center text-[1.2rem]">
+                                        <div class="row w-full flex justify-between items-center text-[1.2rem]">
                                             <div class="w-full flex gap-x-2 text-[1.2rem]">
                                                 <p class="font-bold text-slate-500">Start Date:</p>
                                                 <p>${new Date(experience.start_date).toLocaleDateString("en-US")}</p>
@@ -116,7 +116,7 @@ export const profile = (worker) => {
 
 export const update_modal = (worker) => {
     return `
-        <div class="w-1/2 h-[90vh] bg-white rounded-lg relative">
+        <div class="modal w-1/2 h-[90vh] bg-white rounded-lg relative">
             <div id="close-modal" class="absolute top-1 right-1 rounded-lg w-[5vh] h-[5vh] bg-red-500 text-white flex justify-center items-center font-extrabold text-[1.5rem] cursor-pointer">x</div>
             <h1 class="text-[3rem] my-10 font-extrabold text-orange-400 text-center">Update Worker</h1>
             <form id="edit-worker-form" class="w-full h-[70vh] flex items-center flex-col gap-5 overflow-y-scroll">
@@ -218,7 +218,7 @@ export const update_modal = (worker) => {
 
 export const delete_modal = () => {
     return `
-        <div class="w-1/3 h-[50vh] bg-white rounded-lg relative flex flex-col gap-y-20 justify-center items-center">
+        <div class="modal w-1/3 h-[50vh] bg-white rounded-lg relative flex flex-col gap-y-20 justify-center items-center">
             <h2 class="text-center text-[2rem] font-extrabold">Are you sure you want to delete this worker?</h2>
             <div class="flex justify-between items-center gap-x-10">
                 <button id="delete-worker-btn" class="bg-red-500 py-3 px-5 text-[1.2rem] text-white font-bold rounded-md">Delete</button>
@@ -230,7 +230,7 @@ export const delete_modal = () => {
 
 export const room_worker = (worker) => {
     return `
-        <div id="remove-worker-${worker.id}" class="absolute top-[2px] right-[2px] rounded-md w-[2vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">x</div>
+        <div id="remove-worker-${worker.id}" class="remove-btn absolute top-[2px] right-[2px] rounded-md w-[2vh] h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold text-[.8rem] cursor-pointer">x</div>
         <img src="${worker.photo}" alt="${worker.name}" class="bg-red-500 w-[2vh] h-[2vh] rounded-full"></img>
         <p class="text-slate-500 w-[8vh] text-[0.8rem] font-bold truncate overflow-hidden text-ellipsis">${worker.name}</p>
     `;
@@ -238,15 +238,17 @@ export const room_worker = (worker) => {
 
 export const available_workers = (workers) => {
     return `
-        <div class="w-1/3 h-[90vh] bg-white rounded-lg relative">
+        <div class="modal w-1/3 h-[90vh] bg-white rounded-lg relative">
             <div id="close-modal" class="absolute top-1 right-1 rounded-lg w-[5vh] h-[5vh] bg-red-500 text-white flex justify-center items-center font-extrabold text-[1.5rem] cursor-pointer">x</div>
-            <div class="w-full h-[10vh] flex items-center justify-center gap-x-2">
+            <div class="w-full h-[10vh] flex items-center justify-center gap-x-2 my-10">
                 <h1 class="text-[2rem] font-extrabold text-slate-500">Available Workers</h1>
             </div>
             <div class="w-full h-[80vh] overflow-y-scroll">
                 ${
-                    workers.length > 0 ? workers.map((worker) => {
-                        return `
+                  workers.length > 0
+                    ? workers
+                        .map((worker) => {
+                          return `
                             <div title="${worker.role}" class="worker w-[90%] mx-auto flex items-center gap-x-5 border border-slate-500 p-2 rounded-lg cursor-pointer my-5">
                                 <img src="${worker.photo}" alt="${worker.name}" class="w-[8vh] h-[8vh] rounded-full"></img>
                                 <div>
@@ -255,7 +257,9 @@ export const available_workers = (workers) => {
                                 </div>
                             </div>
                         `;
-                    }).join("") : `<div class="w-full h-[10vh] flex justify-center items-center text-[2rem] font-extrabold text-slate-500">No workers found</div>`
+                        })
+                        .join("")
+                    : `<div class="w-full h-[10vh] flex justify-center items-center text-[2rem] font-extrabold text-slate-500">No workers found</div>`
                 }
             </div>
         </div>

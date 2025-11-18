@@ -1,3 +1,597 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media screen and (max-width: 425px) and (orientation: portrait) {
+
+    #container{
+        flex-direction: column-reverse;
+        overflow: hidden;
+        padding: 0;
+        column-gap: 0;
+        row-gap: 10px;
+    }
+
+    #worker-list{
+        width: 100%;
+    }
+
+    #plan{
+        margin-top: 20px;
+        width: 95%;
+        height: 45vh;
+        padding-block: 0;
+    }
+
+    .add-worker-btn{
+        width: 2vh;
+        height: 2vh;
+        font-size: 10px;
+        border-radius: 5px;
+    }
+
+    .rooms{
+        row-gap: 15px;
+        column-gap: 5px;
+    }
+
+    #add-worker-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #delete-worker-modal .modal{
+        width: 95%;
+        height: 50vh;
+    }
+
+    #edit-worker-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #worker-profile-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #available-workers-list .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #worker-profile-modal .modal .row{
+        flex-direction: column;
+        column-gap: 0;
+        row-gap: 8px;
+    }
+
+    #worker-profile-modal .modal img{
+        width: 10vh;
+        height: 10vh;
+    }
+
+    #worker-profile-modal .modal .name{
+        font-size: 1.2rem;
+    }
+
+    #worker-profile-modal .modal .age-role{
+        font-size: 1rem;
+    }
+
+    .room-worker{
+        width: 5vh;
+        height: 2vh;
+        border-radius: 2px;
+        padding: 1px;
+    }
+
+    .room-worker img{
+        width: 1vh;
+        height: 1vh;
+    }
+
+    .room-worker p{
+        font-size: .2rem;
+    }
+
+    .room-worker .remove-btn{
+        width: 1vh;
+        height: 1vh;
+        border-radius: 2px;
+        font-size: .5rem;
+    }
+}
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+
+    #container{
+        overflow: hidden;
+        padding: 0;
+    }
+
+    #worker-list{
+        width: 30%;
+    }
+
+    #worker-list h1{
+        font-size: 1.5rem;
+    }
+
+    #worker-list button{
+        font-size: .8rem;
+        padding-block: 8px;
+    }
+
+    #worker-list .worker{
+        height: 12vh;
+    }
+
+    #worker-list .worker img{
+        width: 6vh;
+        height: 6vh;
+    }
+
+    #worker-list .worker .name{
+        font-size: .8rem;
+    }
+
+    #worker-list .worker .role{
+        font-size: .6rem;
+    }
+
+    #worker-list .worker .close{
+        width: 3vh;
+        height: 3vh;
+        font-size: 10px;
+        border-radius: 5px;
+    }
+
+    #worker-list .worker .edit{
+        width: 7vh;
+        height: 3vh;
+        font-size: 8px;
+        border-radius: 3px;
+    }
+
+    #plan{
+        width: 65%;
+        height: 65vh;
+        padding-block: 0;
+    }
+
+    .add-worker-btn{
+        width: 4vh;
+        height: 4vh;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    .rooms{
+        row-gap: 15px;
+        column-gap: 5px;
+    }
+
+    #add-worker-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #add-worker-form{
+        height: 50vh;
+    }
+
+    #delete-worker-modal .modal{
+        width: 95%;
+        height: 80vh;
+    }
+
+    #edit-worker-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #edit-worker-form{
+        height: 50vh;
+    }
+
+    #worker-profile-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #available-workers-list .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #worker-profile-modal .modal .name{
+        font-size: 1.2rem;
+    }
+
+    #worker-profile-modal .modal .age-role{
+        font-size: 1rem;
+    }
+
+    .room-worker{
+        width: 12vh;
+        height: 4vh;
+        border-radius: 5px;
+        padding: 1px;
+    }
+
+    .room-worker img{
+        width: 2.5vh;
+        height: 2.5vh;
+    }
+
+    .room-worker p{
+        font-size: .5rem;
+    }
+
+    .room-worker .remove-btn{
+        width: 2vh;
+        height: 2vh;
+        border-radius: 2px;
+        font-size: .6rem;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 426px) and (orientation: portrait) {
+
+    #container{
+        flex-direction: column-reverse;
+        overflow: hidden;
+        padding: 0;
+        column-gap: 0;
+        row-gap: 10px;
+    }
+
+    #worker-list{
+        width: 100%;
+    }
+
+    #worker-list .worker{
+        height: 15vh;
+    }
+
+    #plan{
+        margin-top: 20px;
+        width: 95%;
+        height: 90vh;
+        padding-block: 0;
+    }
+
+    .add-worker-btn{
+        width: 2vh;
+        height: 2vh;
+        font-size: 10px;
+        border-radius: 5px;
+    }
+
+    .rooms{
+        gap: 20px;
+    }
+
+    #add-worker-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #delete-worker-modal .modal{
+        width: 95%;
+        height: 50vh;
+    }
+
+    #edit-worker-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #worker-profile-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #available-workers-list .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    .room-worker{
+        width: 5vh;
+        height: 2vh;
+        border-radius: 2px;
+        padding: 1px;
+    }
+
+    .room-worker img{
+        width: 1vh;
+        height: 1vh;
+    }
+
+    .room-worker p{
+        font-size: .2rem;
+    }
+
+    .room-worker .remove-btn{
+        width: 1vh;
+        height: 1vh;
+        border-radius: 2px;
+        font-size: .5rem;
+    }
+}
+
+@media screen and (max-width: 843px) and (min-width: 768px) and (min-height: 600px) and (orientation: landscape) {
+
+    #container{
+        overflow: hidden;
+        padding: 0;
+    }
+
+    #worker-list{
+        width: 30%;
+    }
+
+    #worker-list h1{
+        font-size: 1.5rem;
+    }
+
+    #worker-list button{
+        font-size: .8rem;
+        padding-block: 8px;
+    }
+
+    #worker-list .worker{
+        height: 12vh;
+    }
+
+    #worker-list .worker img{
+        width: 6vh;
+        height: 6vh;
+    }
+
+    #worker-list .worker .name{
+        font-size: .8rem;
+    }
+
+    #worker-list .worker .role{
+        font-size: .6rem;
+    }
+
+    #worker-list .worker .close{
+        top: 2px;
+        right: 2px;
+        width: 2vh;
+        height: 2vh;
+        font-size: 10px;
+        border-radius: 5px;
+    }
+
+    #worker-list .worker .edit{
+        width: 5vh;
+        height: 2vh;
+        font-size: 8px;
+        border-radius: 3px;
+    }
+
+    #plan{
+        width: 65%;
+        height: 40vh;
+        padding-block: 0;
+        transform: rotate(90deg) scaleX(1.3) scaleY(1.6);
+    }
+
+    .add-worker-btn{
+        width: 2vh;
+        height: 1.5vh;
+        font-size: 10px;
+        border-radius: 3px;
+    }
+
+    .rooms{
+        row-gap: 15px;
+        column-gap: 5px;
+    }
+
+    #add-worker-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #add-worker-form{
+        height: 65vh;
+    }
+
+    #delete-worker-modal .modal{
+        width: 95%;
+        height: 70vh;
+    }
+
+    #edit-worker-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #edit-worker-form{
+        height: 65vh;
+    }
+
+    #worker-profile-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #available-workers-list .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #worker-profile-modal .modal .name{
+        font-size: 1.2rem;
+    }
+
+    #worker-profile-modal .modal .age-role{
+        font-size: 1rem;
+    }
+
+    .room-worker{
+        width: 8vh;
+        height: 3vh;
+        border-radius: 3px;
+        padding: 1px;
+    }
+
+    .room-worker img{
+        width: 2vh;
+        height: 1.5vh;
+    }
+
+    .room-worker p{
+        font-size: .4rem;
+    }
+
+    .room-worker .remove-btn{
+        width: 1vh;
+        height: 1vh;
+        border-radius: 2px;
+        font-size: .4rem;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px){
+
+    #container{
+        overflow: hidden;
+        padding: 0;
+    }
+
+    #worker-list{
+        width: 30%;
+    }
+
+    #worker-list h1{
+        font-size: 1.5rem;
+    }
+
+    #worker-list button{
+        font-size: .8rem;
+        padding-block: 8px;
+    }
+
+    #worker-list .worker{
+        height: 12vh;
+    }
+
+    #worker-list .worker img{
+        width: 6vh;
+        height: 6vh;
+    }
+
+    #worker-list .worker .name{
+        font-size: .8rem;
+    }
+
+    #worker-list .worker .role{
+        font-size: .6rem;
+    }
+
+    #worker-list .worker .close{
+        top: 2px;
+        right: 2px;
+        width: 2vh;
+        height: 2vh;
+        font-size: 10px;
+        border-radius: 5px;
+    }
+
+    #worker-list .worker .edit{
+        width: 5vh;
+        height: 2vh;
+        font-size: 8px;
+        border-radius: 3px;
+    }
+
+    #plan{
+        width: 60%;
+        height: 40vh;
+        padding-block: 0;
+        transform: rotate(90deg) scaleX(1.3) scaleY(1.6);
+    }
+
+    .add-worker-btn{
+        width: 2vh;
+        height: 1.5vh;
+        font-size: 10px;
+        border-radius: 3px;
+    }
+
+    .rooms{
+        row-gap: 15px;
+        column-gap: 5px;
+    }
+
+    #add-worker-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #add-worker-form{
+        height: 65vh;
+    }
+
+    #delete-worker-modal .modal{
+        width: 65%;
+        height: 50vh;
+    }
+
+    #edit-worker-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #edit-worker-form{
+        height: 65vh;
+    }
+
+    #worker-profile-modal .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #available-workers-list .modal{
+        width: 95%;
+        height: 90vh;
+    }
+
+    #worker-profile-modal .modal .name{
+        font-size: 1.2rem;
+    }
+
+    #worker-profile-modal .modal .age-role{
+        font-size: 1rem;
+    }
+
+    .room-worker{
+        width: 7vh;
+        height: 2.5vh;
+        border-radius: 3px;
+        padding: 1px;
+    }
+
+    .room-worker img{
+        width: 2vh;
+        height: 1.5vh;
+    }
+
+    .room-worker p{
+        font-size: .4rem;
+    }
+
+    .room-worker .remove-btn{
+        width: 1vh;
+        height: 1vh;
+        border-radius: 2px;
+        font-size: .4rem;
+    }
+}

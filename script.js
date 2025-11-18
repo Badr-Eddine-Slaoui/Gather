@@ -157,7 +157,7 @@ const switch_worker_with_btn = (worker, room, container, btn) => {
     let worker_div = document.createElement("div");
     worker_div.setAttribute("draggable", "true");
     worker_div.id = `worker-${worker.id}`;
-    worker_div.className = "w-[15vh] h-[5.5vh] flex justify-around p-1 items-center rounded-lg shadow-lg bg-white border border-orange-400 cursor-pointer relative";
+    worker_div.className = "room-worker w-[15vh] h-[5.5vh] flex justify-around p-1 items-center rounded-lg shadow-lg bg-white border border-orange-400 cursor-pointer relative";
     worker_div.innerHTML = room_worker(worker);
 
     let remove_worker = worker_div.querySelector(`#remove-worker-${worker.id}`);
