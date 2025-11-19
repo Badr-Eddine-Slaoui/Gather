@@ -10,6 +10,8 @@ export const list_worker = (worker) => {
     `
 }
 
+export const list_worker_class_name = () => "worker w-10/12 mx-auto h-[7vh] gap-x-2 p-3 px-3 rounded-[6px] sm:w-8/12 sm:h-[8vh] md:w-7/12 md:h-[9vh] lg:w-10/12 lg:h-[9vh] flex lg:gap-x-3 lg:p-1 lg:px-2 items-center lg:rounded-lg shadow-lg bg-white border border-orange-400 cursor-pointer relative"
+
 export const experience_template = (index) => {
   return `
         <div id="close-experience-${index}" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] md:w-[3vh] md:h-[3vh] md:text-[.8rem] md:rounded-[4px] xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer">x</div>
@@ -39,6 +41,8 @@ export const experience_template = (index) => {
         </div>
     `;
 }
+
+export const experience_class = class_name => `${class_name} w-full flex flex-col gap-y-5 py-5 border-b border-slate-500 relative`
 
 export const profile = (worker) => {
     return `
@@ -132,6 +136,8 @@ export const profile = (worker) => {
         </div>
     `;
 }
+
+export const profile_class_name = () => "w-screen h-screen bg-black absolute top-0 left-0 bg-opacity-60 flex justify-center items-center"
 
 export const update_modal = (worker) => {
     return `
@@ -263,6 +269,8 @@ export const update_modal = (worker) => {
     `;
 }
 
+export const update_modal_class_name = () => "w-screen h-screen bg-black absolute top-0 left-0 bg-opacity-60 flex justify-center items-center"
+
 export const delete_modal = () => {
     return `
         <div class="modal w-[90%] h-[25vh] rounded-[4px] sm:w-[80%] lg:w-[60%] xl:w-1/3 xl:h-[50vh] bg-white xl:rounded-lg relative flex flex-col gap-y-20 justify-center items-center">
@@ -275,6 +283,8 @@ export const delete_modal = () => {
     `
 }
 
+export const delete_modal_class_name = () => "w-screen h-screen bg-black absolute top-0 left-0 bg-opacity-60 flex justify-center items-center"
+
 export const room_worker = (worker) => {
     return `
         <div id="remove-worker-${worker.id}" class="remove-btn absolute top-[1px] right-[1px] rounded-[2px] text-[.4rem] w-[1vh] h-[1vh] xl:top-1 xl:right-1 xl:rounded-md xl:w-[2vh] xl:h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[.8rem] cursor-pointer">x</div>
@@ -283,14 +293,16 @@ export const room_worker = (worker) => {
     `;
 }
 
+export const room_worker_class_name = () => "room-worker w-[5vh] h-[2.5vh] rounded-[3px] sm:w-[7vh] sm:h-[3vh] xl:w-[15vh] xl:h-[5.5vh] flex justify-around xl:p-1 items-center xl:rounded-lg shadow-lg bg-white border border-orange-400 cursor-pointer relative"
+
 export const available_workers = (workers) => {
     return `
-        <div class="modal w-[90%] h-[80vh] rounded-[4px] sm:w-[80%] lg:w-[60%] xl:w-1/3 xl:h-[90vh] bg-white xl:rounded-lg relative">
+        <div class="modal w-[90%] h-[50vh] rounded-[4px] sm:w-[80%] sm:h-[60vh] lg:w-[60%] xl:w-1/3 xl:h-[90vh] bg-white xl:rounded-lg relative">
             <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-500 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer">x</div>
             <div class="w-full h-[8vh] my-5 xl:h-[10vh] flex items-center justify-center gap-x-2 xl:my-10">
                 <h1 class="text-[1.2rem] md:text-[1.5rem] xl:text-[2rem] font-extrabold text-slate-500">Available Workers</h1>
             </div>
-            <div class="w-full h-[80vh] overflow-y-scroll">
+            <div class="w-full h-[30vh] sm:h-[40vh] xl:h-[60vh] overflow-y-scroll">
                 ${
                   workers.length > 0
                     ? workers
@@ -312,3 +324,7 @@ export const available_workers = (workers) => {
         </div>
     `;
 }
+
+export const available_workers_class_name = () => "w-screen h-screen bg-black absolute top-0 left-0 bg-opacity-60 flex justify-center items-center overflow-x-hidden"
+
+export const room_btn_class_name = () => "add-worker-btn w-[1.5vh] h-[1.5vh] rounded-[3px] text-[.6rem] sm:w-[2.5vh] sm:h-[2.5vh] sm:text-[.8rem] xl:w-[5vh] xl:h-[5vh] xl:rounded-md shadow-lg flex justify-center items-center bg-blue-500 text-white font-extrabold xl:text-[2rem]"
