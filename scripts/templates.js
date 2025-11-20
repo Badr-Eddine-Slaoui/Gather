@@ -1,20 +1,20 @@
 export const list_worker = (worker) => {
     return `
-        <div id="remove-worker-${worker.id}" class="close absolute top-[2px] right-[2px] rounded-[3px] text-[.6rem] w-[1.5vh] h-[1.5vh] xl:top-1 xl:right-1 xl:rounded-md xl:w-[2vh] xl:h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[.8rem] cursor-pointer">x</div>
+        <div id="remove-worker-${worker.id}" class="close absolute top-[2px] right-[2px] rounded-[3px] text-[.6rem] w-[1.5vh] h-[1.5vh] xl:top-1 xl:right-1 xl:rounded-md xl:w-[2vh] xl:h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[.8rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.1] hover:bg-red-500">x</div>
         <img src="${worker.photo}" alt="${worker.name}" class="w-[5vh] h-[5vh] rounded-full"></img>
         <div>
             <p class="name text-slate-500 text-[1rem] w-[25vh] xl:text-[1.2rem] font-bold truncate overflow-hidden text-ellipsis capitalize">${worker.name}</p>
             <p class="role text-[.8rem] xl:text-[1rem] font-bold truncate overflow-hidden text-ellipsis capitalize">${worker.role}</p>
         </div>
-        <div id="edit-worker-${worker.id}" class="edit absolute bottom-[2px] right-[2px] rounded-[3px] w-[4vh] h-[2.5vh] text-[.6rem] xl:bottom-1 xl:right-1 xl:rounded-md xl:w-[5vh] xl:h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[.8rem] cursor-pointer">Edit</div>
-    `
+        <div id="edit-worker-${worker.id}" class="edit absolute bottom-[2px] right-[2px] rounded-[3px] w-[4vh] h-[2.5vh] text-[.6rem] xl:bottom-1 xl:right-1 xl:rounded-md xl:w-[5vh] xl:h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[.8rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.1] hover:bg-blue-500">Edit</div>
+    `;
 }
 
-export const list_worker_class_name = () => "worker w-10/12 mx-auto h-[7vh] gap-x-2 p-3 px-3 rounded-[6px] sm:w-8/12 sm:h-[8vh] md:w-7/12 md:h-[9vh] lg:w-10/12 lg:h-[9vh] flex lg:gap-x-3 lg:p-1 lg:px-2 items-center lg:rounded-lg shadow-lg bg-white border border-orange-400 cursor-pointer relative"
+export const list_worker_class_name = () => "worker w-10/12 mx-auto h-[7vh] gap-x-2 p-3 px-3 rounded-[6px] sm:w-8/12 sm:h-[8vh] md:w-7/12 md:h-[9vh] lg:w-10/12 lg:h-[9vh] flex lg:gap-x-3 lg:p-1 lg:px-2 items-center lg:rounded-lg shadow-lg bg-white border border-orange-400 cursor-pointer relative transition-all duration-300 ease-in-out hover:scale-[1.05]";
 
 export const experience_template = (index) => {
   return `
-        <div id="close-experience-${index}" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] md:w-[3vh] md:h-[3vh] md:text-[.8rem] md:rounded-[4px] xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer">x</div>
+        <div id="close-experience-${index}" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] md:w-[3vh] md:h-[3vh] md:text-[.8rem] md:rounded-[4px] xl:rounded-lg xl:w-[3.5vh] xl:h-[3.5vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-500">x</div>
         <div class="w-full flex justify-between items-center">
             <div class="w-[40%] flex flex-col gap-y-2">
                 <label for="title-${index}" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-slate-500">Title:</label>
@@ -47,7 +47,7 @@ export const experience_class = class_name => `${class_name} w-full flex flex-co
 export const profile = (worker) => {
     return `
         <div class="modal w-[90%] h-[80vh] rounded-[4px] sm:w-[80%] lg:w-[60%] xl:w-1/2 xl:h-[90vh] bg-white xl:rounded-lg flex flex-col items-center gap-y-5 overflow-y-scroll relative">
-            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-500 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer">x</div>
+            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-400 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">x</div>
             <h1 class="text-[1.2rem] my-5 md:text-[1.5rem] xl:text-[2rem] xl:mt-10 xl:mb-5 text-center font-extrabold text-orange-400">Worker Profile</h1>
             <div class="w-[90%] flex items-center gap-x-5">
                 <img src="${worker.photo}" alt="${
@@ -142,7 +142,7 @@ export const profile_class_name = () => "w-screen h-screen bg-black absolute top
 export const update_modal = (worker) => {
     return `
         <div class="modal w-[90%] h-[80vh] sm:w-[80%] lg:w-[60%] xl:w-1/2 xl:h-[90vh] bg-white rounded-lg relative">
-            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-500 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer">x</div>
+            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-400 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">x</div>
             <h1 class="text-[1.5rem] my-5 md:text-[2rem] xl:text-[3rem] xl:my-10 font-extrabold text-orange-400 text-center">Update Worker</h1>
             <form id="edit-worker-form" class="w-full h-[65vh] xl:h-[70vh] flex items-center flex-col gap-5 overflow-y-scroll">
                 <div class="w-[90%] flex flex-col gap-y-2">
@@ -231,7 +231,7 @@ export const update_modal = (worker) => {
                           let index = i + 1;
                           return `
                                     <div class="worker-experience w-full flex flex-col gap-y-5 py-5 border-b border-slate-500 relative">
-                                        <div id="close-worker-experience-${index}" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] md:w-[3vh] md:h-[3vh] md:text-[.8rem] md:rounded-[4px] xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer">x</div>
+                                        <div id="close-worker-experience-${index}" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] md:w-[3vh] md:h-[3vh] md:text-[.8rem] md:rounded-[4px] xl:rounded-lg xl:w-[3.5vh] xl:h-[3.5vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-500">x</div>
                                         <div class="w-full flex justify-between items-center">
                                             <div class="w-[40%] flex flex-col gap-y-2">
                                                 <label for="title-${index}" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-slate-500">Title:</label>
@@ -261,8 +261,8 @@ export const update_modal = (worker) => {
                         })}
                     </div>
                 <div class="w-[90%] flex justify-between items-center">
-                    <button id="add-worker-experience-btn" type="button" class="bg-orange-400 py-2 px-3 text-[.8rem] rounded-[4px] xl:py-3 xl:px-5 xl:text-[1.2rem] text-white font-bold xl:rounded-md">Add Experience</button>
-                    <button type="submit" class="bg-blue-400 py-2 px-3 text-[.8rem] rounded-[4px] xl:py-3 xl:px-5 xl:text-[1.2rem] text-white font-bold xl:rounded-md">Submit</button>
+                    <button id="add-worker-experience-btn" type="button" class="bg-orange-400 py-2 px-3 text-[.8rem] rounded-[4px] md:text-[1rem] xl:py-3 xl:px-5 xl:text-[1.2rem] text-white font-bold xl:rounded-md transition-all duration-300 ease-in-out hover:bg-orange-600 hover:scale-[1.05]">Add Experience</button>
+                    <button type="submit" class="bg-blue-400 py-2 px-3 text-[.8rem] rounded-[4px] md:text-[1rem] xl:py-3 xl:px-5 xl:text-[1.2rem] text-white font-bold xl:rounded-md transition-all duration-300 ease-in-out hover:bg-blue-600 hover:scale-[1.05]">Submit</button>
                 </div>
             </form>
         </div>
@@ -276,8 +276,8 @@ export const delete_modal = () => {
         <div class="modal w-[90%] h-[25vh] rounded-[4px] sm:w-[80%] lg:w-[60%] xl:w-1/3 xl:h-[50vh] bg-white xl:rounded-lg relative flex flex-col gap-y-20 justify-center items-center">
             <h2 class="text-center text-[1.2rem] xl:text-[2rem] font-extrabold">Are you sure you want to delete this worker?</h2>
             <div class="flex justify-between items-center gap-x-10">
-                <button id="delete-worker-btn" class="bg-red-500 py-2 px-3 text-[.8rem] xl:py-3 xl:px-5 xl:text-[1.2rem] text-white font-bold rounded-md">Delete</button>
-                <button id="cancel-delete-worker-btn" class="bg-blue-500 py-2 px-3 text-[.8rem] xl:py-3 xl:px-5 xl:text-[1.2rem] text-white font-bold rounded-md">Cancel</button>
+                <button id="delete-worker-btn" class="bg-red-500 py-2 px-3 text-[.8rem] xl:py-3 xl:px-5 xl:text-[1.2rem] text-white font-bold rounded-md transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">Delete</button>
+                <button id="cancel-delete-worker-btn" class="bg-blue-500 py-2 px-3 text-[.8rem] xl:py-3 xl:px-5 xl:text-[1.2rem] text-white font-bold rounded-md transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-blue-600">Cancel</button>
             </div>
         </div>
     `
@@ -287,18 +287,18 @@ export const delete_modal_class_name = () => "w-screen h-screen bg-black absolut
 
 export const room_worker = (worker) => {
     return `
-        <div id="remove-worker-${worker.id}" class="remove-btn absolute top-[1px] right-[1px] rounded-[2px] text-[.4rem] w-[1vh] h-[1vh] xl:top-1 xl:right-1 xl:rounded-md xl:w-[2vh] xl:h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[.8rem] cursor-pointer">x</div>
+        <div id="remove-worker-${worker.id}" class="remove-btn absolute top-[1px] right-[1px] rounded-[2px] text-[.4rem] w-[1vh] h-[1vh] xl:top-1 xl:right-1 xl:rounded-md xl:w-[2vh] xl:h-[2vh] bg-orange-400 text-white flex justify-center items-center font-extrabold xl:text-[.8rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-500">x</div>
         <img src="${worker.photo}" alt="${worker.name}" class="bg-red-500 w-[1.5vh] h-[1.5vh] xl:w-[2vh] xl:h-[2vh] rounded-full"></img>
         <p class="text-slate-500 text-[0.4rem] w-[3vh] xl:w-[8vh] xl:text-[0.8rem] font-bold truncate overflow-hidden text-ellipsis">${worker.name}</p>
     `;
 }
 
-export const room_worker_class_name = () => "room-worker w-[5vh] h-[2.5vh] rounded-[3px] sm:w-[7vh] sm:h-[3vh] xl:w-[15vh] xl:h-[5.5vh] flex justify-around xl:p-1 items-center xl:rounded-lg shadow-lg bg-white border border-orange-400 cursor-pointer relative"
+export const room_worker_class_name = () => "room-worker w-[5vh] h-[2.5vh] rounded-[3px] sm:w-[7vh] sm:h-[3vh] xl:w-[15vh] xl:h-[5.5vh] flex justify-around xl:p-1 items-center xl:rounded-lg shadow-lg bg-white border border-orange-400 cursor-pointer relative transition-all duration-300 ease-in-out hover:scale-[1.05]"
 
 export const available_workers = (workers) => {
     return `
         <div class="modal w-[90%] h-[50vh] rounded-[4px] sm:w-[80%] sm:h-[60vh] lg:w-[60%] xl:w-1/3 xl:h-[90vh] bg-white xl:rounded-lg relative">
-            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-500 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer">x</div>
+            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-400 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">x</div>
             <div class="w-full h-[8vh] my-5 xl:h-[10vh] flex items-center justify-center gap-x-2 xl:my-10">
                 <h1 class="text-[1.2rem] md:text-[1.5rem] xl:text-[2rem] font-extrabold text-slate-500">Available Workers</h1>
             </div>
@@ -308,7 +308,7 @@ export const available_workers = (workers) => {
                     ? workers
                         .map((worker) => {
                           return `
-                            <div title="${worker.role}" class="worker w-[90%] mx-auto flex items-center gap-x-5 border border-slate-500 p-2 rounded-lg cursor-pointer my-5">
+                            <div title="${worker.role}" class="worker w-[90%] mx-auto flex items-center gap-x-5 border border-slate-500 p-2 rounded-lg cursor-pointer my-5 transition-all duration-300 ease-in-out hover:scale-[1.05]">
                                 <img src="${worker.photo}" alt="${worker.name}" class="w-[5vh] h-[5vh] xl:w-[8vh] xl:h-[8vh] rounded-full"></img>
                                 <div>
                                     <p class="text-slate-500 text-[1rem] xl:text-[1.5rem] font-bold">${worker.name}</p>
@@ -327,4 +327,4 @@ export const available_workers = (workers) => {
 
 export const available_workers_class_name = () => "w-screen h-screen bg-black absolute top-0 left-0 bg-opacity-60 flex justify-center items-center overflow-x-hidden"
 
-export const room_btn_class_name = () => "add-worker-btn w-[1.5vh] h-[1.5vh] rounded-[3px] text-[.6rem] sm:w-[2.5vh] sm:h-[2.5vh] sm:text-[.8rem] xl:w-[5vh] xl:h-[5vh] xl:rounded-md shadow-lg flex justify-center items-center bg-blue-500 text-white font-extrabold xl:text-[2rem]"
+export const room_btn_class_name = () => "add-worker-btn w-[1.5vh] h-[1.5vh] rounded-[3px] text-[.6rem] sm:w-[2.5vh] sm:h-[2.5vh] sm:text-[.8rem] xl:w-[5vh] xl:h-[5vh] xl:rounded-md shadow-lg flex justify-center items-center bg-blue-500 text-white font-extrabold xl:text-[2rem] transition-all duration-300 ease-in-out hover:scale-[1.1] hover:bg-blue-600 hover:text-red-500"
