@@ -61,6 +61,7 @@ export let fakeData = [
         enter_date: "2025-10-01T09:00",
         leave_date: "2026-04-01T17:00",
         photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        status: "unassigned",
         experiences_arr: [
             {
             title: "Assistant Manager",
@@ -80,6 +81,7 @@ export let fakeData = [
         enter_date: "2025-09-12T10:00",
         leave_date: "2026-05-02T18:00",
         photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        status: "unassigned",
         experiences_arr: [
             {
             title: "IT Support",
@@ -99,6 +101,7 @@ export let fakeData = [
         enter_date: "2025-09-01T08:00",
         leave_date: "2025-12-20T16:00",
         photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        status: "unassigned",
         experiences_arr: [
             {
             title: "Front Desk Assistant",
@@ -118,6 +121,7 @@ export let fakeData = [
         enter_date: "2025-03-01T06:00",
         leave_date: "2025-12-01T14:00",
         photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        status: "unassigned",
         experiences_arr: [
             {
             title: "Security Guard",
@@ -137,6 +141,7 @@ export let fakeData = [
         enter_date: "2025-04-20T07:00",
         leave_date: "2026-01-01T14:00",
         photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        status: "unassigned",
         experiences_arr: [
             {
             title: "Cleaning Staff",
@@ -156,6 +161,7 @@ export let fakeData = [
         enter_date: "2025-07-01T09:00",
         leave_date: "2026-02-01T17:00",
         photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        status: "unassigned",
         experiences_arr: [
             {
             title: "Network Technician",
@@ -181,6 +187,7 @@ export let fakeData = [
         enter_date: "2025-11-10T14:00",
         leave_date: "2025-11-10T17:00",
         photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        status: "unassigned",
         experiences_arr: [],
     },
     {
@@ -193,6 +200,7 @@ export let fakeData = [
         enter_date: "2025-09-15T08:00",
         leave_date: "2026-01-10T17:00",
         photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        status: "unassigned",
         experiences_arr: [
             {
             title: "Receptionist",
@@ -212,6 +220,7 @@ export let fakeData = [
         enter_date: "2025-01-05T07:00",
         leave_date: "2025-08-28T15:00",
         photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        status: "unassigned",
         experiences_arr: [
             {
             title: "Building Cleaner",
@@ -231,6 +240,7 @@ export let fakeData = [
         enter_date: "2025-01-05T07:00",
         leave_date: "2025-11-28T15:00",
         photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        status: "unassigned",
         experiences_arr: [
             {
             title: "Logistics Security",

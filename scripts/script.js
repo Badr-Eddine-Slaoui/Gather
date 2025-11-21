@@ -167,6 +167,7 @@ const switch_worker_with_btn = (worker, room, container, btn) => {
             e.stopPropagation();
             container.insertBefore(btn, worker_div);
             worker_div.remove();
+            worker.status = "unassigned";
             add_worker_to_list(worker);
             set_room_array(room, get_room_array(room).filter((w) => w.id !== worker.id));
             if (worker_list_arr.length === 0) no_worker_in_list.classList.add("hidden");
@@ -198,6 +199,7 @@ const add_worker_to_room = (worker, room) => {
 
     if (worker_list_arr.length === 0) no_worker_in_list.classList.remove("hidden");
 
+    worker.status = room;
     room_arr.push(worker);
     set_room_array(room, room_arr);
 };
@@ -330,7 +332,7 @@ add_worker_form.addEventListener("submit", (e) => {
         let { all_experiences_valid, experiences_arr } = validate_experiences("experience");
     
         if (all_experiences_valid) {
-            let worker = { id: Date.now(), name, age, role, email, phone, enter_date, leave_date, photo, experiences_arr,};
+            let worker = { id: Date.now(), name, age, role, email, phone, enter_date, leave_date, photo, experiences_arr, status: "unassigned"};
             worker_list_arr.push(worker);
             save();
             add_worker_modal.classList.replace("flex", "hidden");
@@ -415,8 +417,8 @@ const edit_worker = (e, id) => {
         let { all_experiences_valid, experiences_arr } = validate_experiences("worker-experience");
 
         if (all_experiences_valid) {
-            let worker = { id, name, age, role, email, phone, enter_date, leave_date, photo, experiences_arr,};
-            worker_list_arr.splice(worker_list_arr.findIndex((worker) => worker.id == id), 1, worker);
+            let worker = worker_list_arr.find((worker) => worker.id == id);
+            worker = { ...worker, name, age, role, email, phone, enter_date, leave_date, photo, experiences_arr};
             save();
             update_worker_list();
             document.getElementById("edit-worker-modal").remove();

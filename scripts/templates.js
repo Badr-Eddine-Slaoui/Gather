@@ -60,7 +60,7 @@ export const profile = (worker) => {
                     <p class="age-role text-[.8rem] md:text-[1rem] xl:text-[1.2rem]">
                         <span>${worker.age} years</span> - <span>${
       worker.role
-    }</span>
+    }</span> - <span class="capitalize">${worker.status.replace("-", " ") }</span>
                     </p>
                 </div>
             </div>
