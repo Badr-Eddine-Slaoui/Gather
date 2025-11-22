@@ -1,3 +1,9 @@
+const date_format = {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+};
+
 export const list_worker = (worker) => {
     return `
         <div id="remove-worker-${worker.id}" class="close absolute top-[2px] right-[2px] rounded-[3px] text-[.6rem] w-[1.5vh] h-[1.5vh] xl:top-1 xl:right-1 xl:rounded-md xl:w-[2vh] xl:h-[2vh] bg-luffy-red text-mist-white flex justify-center items-center font-extrabold xl:text-[.8rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.1] hover:bg-red-500">x</div>
@@ -31,12 +37,12 @@ export const experience_template = (index) => {
         <div class="w-full flex justify-between items-center">
             <div class="w-[40%] flex flex-col gap-y-2">
                 <label for="start-date-${index}" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Start Date:</label>
-                <input type="datetime-local" name="start-date-${index}" id="start-date-${index}" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
+                <input type="date" name="start-date-${index}" id="start-date-${index}" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
                 <p id="start_date_err_${index}" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
             </div>
             <div class="w-[40%] flex flex-col gap-y-2">
                 <label for="end-date-${index}" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">End Date:</label>
-                <input type="datetime-local" name="end-date-${index}" id="end-date-${index}" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
+                <input type="date" name="end-date-${index}" id="end-date-${index}" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
                 <p id="end_date_err_${index}" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
             </div>
         </div>
@@ -49,7 +55,7 @@ export const experience_class = (class_name) =>
 export const profile = (worker) => {
     return `
         <div class="modal w-[90%] h-[80vh] rounded-[4px] sm:w-[80%] lg:w-[60%] xl:w-1/2 xl:h-[90vh] bg-pirate-gray xl:rounded-lg flex flex-col items-center gap-y-5 overflow-y-scroll relative">
-            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-400 text-mist-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">x</div>
+            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-luffy-red text-mist-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">x</div>
             <h1 class="text-[1.2rem] my-5 md:text-[1.5rem] xl:text-[2rem] xl:mt-10 xl:mb-5 text-center font-extrabold text-luffy-red">Worker Profile</h1>
             <div class="w-[90%] flex items-center gap-x-5">
                 <img src="${worker.photo}" alt="${worker.name
@@ -76,15 +82,17 @@ export const profile = (worker) => {
             <div class="row w-[90%] flex justify-between items-center text-[1.2rem]">
                 <div class="w-full flex flex-col gap-y-2 text-[.8rem] md:flex-row md:gap-x-2 md:gap-y-0 md:text-[1rem] xl:text-[1.2rem]">
                     <p class="font-bold text-straw-gold">Start Date:</p>
-                    <p class="text-mist-white">${new Date(
-            worker.enter_date
-        ).toLocaleDateString("en-US")}</p>
+                    <p class="text-mist-white">${new Date(worker.enter_date).toLocaleDateString('en-EN', date_format)}</p>
                 </div>
                 <div class="w-full flex flex-col gap-y-2 text-[.8rem] md:flex-row md:gap-x-2 md:gap-y-0 md:text-[1rem] xl:text-[1.2rem]">
                     <p class="font-bold text-straw-gold">End Date:</p>
-                    <p class="text-mist-white">${new Date(
-            worker.leave_date
-        ).toLocaleDateString("en-US")}</p>
+                    <p class="text-mist-white">${new Date(worker.leave_date).toLocaleDateString('en-EN', date_format)}</p>
+                </div>
+            </div>
+            <div class="row w-[90%] flex justify-between items-center text-[1.2rem]">
+                <div class="w-full flex flex-col gap-y-2 text-[.8rem] md:flex-row md:gap-x-2 md:gap-y-0 md:text-[1rem] xl:text-[1.2rem]">
+                    <p class="font-bold text-straw-gold">Total Exporience:</p>
+                    <p class="text-mist-white">${worker.total_experiences}</p>
                 </div>
             </div>
             ${worker.experiences_arr.length > 0
@@ -110,19 +118,11 @@ export const profile = (worker) => {
                                         <div class="row w-full flex justify-between items-center text-[1.2rem]">
                                             <div class="w-full flex flex-col gap-y-2 text-[.8rem] md:flex-row md:gap-x-2 md:gap-y-0 md:text-[1rem] xl:text-[1.2rem]">
                                                 <p class="font-bold text-straw-gold">Start Date:</p>
-                                                <p class="text-mist-white">${new Date(
-                            experience.start_date
-                        ).toLocaleDateString(
-                            "en-US"
-                        )}</p>
+                                                <p class="text-mist-white">${new Date(experience.start_date).toLocaleDateString('en-EN', date_format)}</p>
                                             </div>
                                             <div class="w-full flex flex-col gap-y-2 text-[.8rem] md:flex-row md:gap-x-2 md:gap-y-0 md:text-[1rem] xl:text-[1.2rem]">
                                                 <p class="font-bold text-straw-gold">End Date:</p>
-                                                <p class="text-mist-white">${new Date(
-                            experience.end_date
-                        ).toLocaleDateString(
-                            "en-US"
-                        )}</p>
+                                                <p class="text-mist-white">${new Date(experience.end_date).toLocaleDateString('en-EN', date_format)}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@ export const profile_class_name = () =>
 export const update_modal = (worker) => {
     return `
         <div class="modal w-[90%] h-[80vh] sm:w-[80%] lg:w-[60%] xl:w-1/2 xl:h-[90vh] bg-pirate-gray rounded-lg relative">
-            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-400 text-mist-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">x</div>
+            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-luffy-red text-mist-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">x</div>
             <h1 class="text-[1.5rem] my-5 md:text-[2rem] xl:text-[3rem] xl:my-10 font-extrabold text-luffy-red text-center">Update Worker</h1>
             <form id="edit-worker-form" class="w-full h-[65vh] xl:h-[70vh] flex items-center flex-col gap-5 overflow-y-scroll">
                 <div class="w-[90%] flex flex-col gap-y-2">
@@ -200,13 +200,13 @@ export const update_modal = (worker) => {
                 </div>
                 <div class="w-[90%] flex flex-col gap-y-2">
                     <label for="worker-enter-date" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Enter Date:</label>
-                    <input type="datetime-local" value="${worker.enter_date
+                    <input type="date" value="${worker.enter_date
         }" name="worker-enter-date" id="worker-enter-date" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
                     <p id="worker_enter_date_err" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
                 </div>
                 <div class="w-[90%] flex flex-col gap-y-2">
                     <label for="worker-leave-date" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Leave Date:</label>
-                    <input type="datetime-local" value="${worker.leave_date
+                    <input type="date" value="${worker.leave_date
         }" name="worker-leave-date" id="worker-leave-date" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
                     <p id="worker_leave_date_err" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
                 </div>
@@ -233,12 +233,12 @@ export const update_modal = (worker) => {
                                         <div class="w-full flex justify-between items-center">
                                             <div class="w-[40%] flex flex-col gap-y-2">
                                                 <label for="start-date-${index}" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Start Date:</label>
-                                                <input value="${experience.start_date}" type="datetime-local" name="start-date-${index}" id="start-date-${index}" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
+                                                <input value="${experience.start_date}" type="date" name="start-date-${index}" id="start-date-${index}" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
                                                 <p id="start_date_err_${index}" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
                                             </div>
                                             <div class="w-[40%] flex flex-col gap-y-2">
                                                 <label for="end-date-${index}" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">End Date:</label>
-                                                <input value="${experience.end_date}" type="datetime-local" name="end-date-${index}" id="end-date-${index}" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
+                                                <input value="${experience.end_date}" type="date" name="end-date-${index}" id="end-date-${index}" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
                                                 <p id="end_date_err_${index}" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
                                             </div>
                                         </div>
@@ -285,11 +285,11 @@ export const room_worker_class_name = () =>
     "room-worker w-[5vh] h-[2.5vh] rounded-[3px] sm:w-[7vh] sm:h-[3vh] xl:w-[15vh] xl:h-[5.5vh] flex xl:gap-x-2 xl:p-1 items-center xl:rounded-lg shadow-lg bg-pirate-gray border border-deck-wood cursor-pointer relative transition-all duration-300 ease-in-out hover:scale-[1.05]";
 
 export const available_workers = (workers) => {
-    return `
+        return `
         <div class="modal w-[90%] h-[50vh] rounded-[4px] sm:w-[80%] sm:h-[60vh] lg:w-[60%] xl:w-1/3 xl:h-[90vh] bg-pirate-gray xl:rounded-lg relative">
-            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-400 text-mist-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">x</div>
+            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-luffy-red text-mist-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">x</div>
             <div class="w-full h-[8vh] my-5 xl:h-[10vh] flex items-center justify-center gap-x-2 xl:my-10">
-                <h1 class="text-[1.2rem] md:text-[1.5rem] xl:text-[2rem] font-extrabold text-straw-gold">Available Workers</h1>
+                <h1 class="text-[1.2rem] md:text-[1.5rem] xl:text-[2rem] font-extrabold text-straw-gold">Available Workers (${workers.length})</h1>
             </div>
             <div class="w-full h-[30vh] sm:h-[40vh] xl:h-[60vh] overflow-y-scroll">
                 ${workers.length > 0
@@ -306,10 +306,10 @@ export const available_workers = (workers) => {
                         `;
                 })
                 .join("")
-            : ` <div class="w-[90%] mx-auto text-center h-[8vh] text-[1.2rem] my-5 md:text-[1.5rem] xl:h-[10vh] flex justify-center items-center xl:my-10 xl:text-[2rem] font-extrabold text-luffy-red"> There's No Available Workers For This Room Now </div>`
-        } </div> 
-    </div>
-    `;
+            : ` < div class = "w-[90%] mx-auto text-center h-[8vh] text-[1.2rem] my-5 md:text-[1.5rem] xl:h-[10vh] flex justify-center items-center xl:my-10 xl:text-[2rem] font-extrabold text-luffy-red" > There 's No Available Workers For This Room Now </div>`
+    } < /div>  <
+    /div>
+`;
 };
 
 export const available_workers_class_name = () =>

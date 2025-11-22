@@ -1,8 +1,11 @@
-import { add_experience_btn, add_worker_btn, add_worker_form, add_worker_modal, available_rooms, close_add_worker_modal, experiences, img, room_btns, room_limits, no_worker_in_list, room_by_roles, worker_list, search, filter, randomize, fakeData,} from "./globalVariables.js";
+import { add_experience_btn, add_worker_btn, add_worker_form, add_worker_modal, available_rooms, close_add_worker_modal, experiences, img, room_btns, room_limits, no_worker_in_list, room_by_roles, worker_list, search, filter, randomize, fakeData, } from "./globalVariables.js";
 import { available_workers, available_workers_class_name, delete_modal, delete_modal_class_name, experience_class, experience_template, list_worker, list_worker_class_name, profile, profile_class_name, room_btn_class_name, room_worker, room_worker_class_name, update_modal, update_modal_class_name, } from "./templates.js";
 import { validate_age, validate_email, validate_enter_date, validate_experiences, validate_leave_date, validate_name, validate_phone, validate_role, } from "./validators.js";
 
-const save = () => localStorage.setItem("worker_list_arr", JSON.stringify(worker_list_arr));
+const save = () => {
+    localStorage.setItem("worker_list_arr", JSON.stringify(worker_list_arr))
+    document.getElementById("worker-list-count").textContent = worker_list_arr.length;
+};
 
 const load = () => JSON.parse(localStorage.getItem("worker_list_arr") || "[]");
 
@@ -11,17 +14,6 @@ let worker_list_arr = load();
 const get_room_array = r => JSON.parse(localStorage.getItem(`${r}-workers`) || "[]");
 
 const set_room_array = (r, arr) => localStorage.setItem(`${r}-workers`, JSON.stringify(arr));
-
-if (worker_list_arr.length === 0) {
-    let all_arrays_are_empty = available_rooms.every(r => get_room_array(r).length === 0);
-
-    if (all_arrays_are_empty) {
-        localStorage.clear();
-        localStorage.setItem("worker_list_arr", JSON.stringify(fakeData));
-        worker_list_arr = fakeData;
-        location.reload();
-    }
-}
 
 //Helpers
 const add_experience = (arr, parent, class_name) => {
@@ -44,6 +36,11 @@ const add_experience = (arr, parent, class_name) => {
 
 const handle_inlist_worker_drag = (e, worker) => {
     const ghostCard = e.currentTarget.cloneNode(true);
+    const targetParagraphs = e.currentTarget.querySelectorAll("p");
+    const ghostCardParagraphs = ghostCard.querySelectorAll("p");
+    ghostCardParagraphs.forEach((p, i) => {
+        p.style.fontSize = parseFloat(window.getComputedStyle(targetParagraphs[i]).fontSize.replace("px", "")) / 1.6 + "px";
+    });
     ghostCard.style.width = `${e.currentTarget.offsetWidth / 1.6}px`;
     ghostCard.style.height = `${e.currentTarget.offsetHeight}px`;
 
@@ -58,6 +55,38 @@ const handle_inlist_worker_drag = (e, worker) => {
     setTimeout(() => ghostCard.remove(), 0);
 
     handle_drag_start(e, worker);
+};
+
+const handle_inlist_worker_drop = (e, worker) => {
+    e.preventDefault();
+
+    let room = e.dataTransfer.getData("room");
+    if (room) return;
+
+    e.stopPropagation();
+
+    let second = JSON.parse(e.dataTransfer.getData("worker"));
+
+    let container = document.getElementById("worker-list");
+    let worker_div = document.getElementById(`worker-${worker.id}`);
+    let worker_next_sibling = worker_div.nextElementSibling;
+    let second_div = document.getElementById(`worker-${second.id}`);
+    let second_next_sibling = second_div.nextElementSibling;
+
+    if (worker_div === second_next_sibling) {
+        container.insertBefore(worker_div, second_div);
+    } else if (second_div === worker_next_sibling) {
+        container.insertBefore(second_div, worker_div);
+    }else {
+        container.insertBefore(worker_div, second_next_sibling);
+        container.insertBefore(second_div, worker_next_sibling);
+    }
+
+    let worker_index = worker_list_arr.findIndex(w => w.id === worker.id);
+    let second_index = worker_list_arr.findIndex(w => w.id === second.id);
+    worker_list_arr[worker_index] = second;
+    worker_list_arr[second_index] = worker;
+    save();
 };
 
 const add_worker_to_list = (worker) => {
@@ -80,6 +109,10 @@ const add_worker_to_list = (worker) => {
 
     div.addEventListener("dragend", handle_drag_end);
 
+    div.addEventListener("dragover", e => e.preventDefault());
+
+    div.addEventListener("drop", e => handle_inlist_worker_drop(e, worker));
+
     worker_list.appendChild(div);
 };
 
@@ -96,15 +129,16 @@ const show_worker_profile = (worker) => {
 };
 
 const load_worker_list = (arr = worker_list_arr) => {
+    document.getElementById("worker-list-count").textContent = arr.length;
     if (arr.length > 0) {
         no_worker_in_list.classList.add("hidden");
-        arr.forEach( worker => add_worker_to_list(worker));
-    } else no_worker_in_list.classList.remove("hidden"); 
+        arr.forEach(worker => add_worker_to_list(worker));
+    } else no_worker_in_list.classList.remove("hidden");
 };
 
 const update_worker_list = (arr = worker_list_arr) => {
     worker_list.querySelectorAll(".worker")
-        .forEach( worker => worker.remove());
+        .forEach(worker => worker.remove());
     load_worker_list(arr);
 };
 
@@ -152,7 +186,7 @@ const show_available_workers_list = (workers, room) => {
 
 const room_btn_handler = (e) => {
     let id = e.target.parentElement.parentElement.id;
-    show_available_workers_list(worker_list_arr.filter( w => room_by_roles[id].includes(w.role)), id);
+    show_available_workers_list(worker_list_arr.filter(w => room_by_roles[id].includes(w.role)), id);
 };
 
 const switch_worker_with_btn = (worker, room, container, btn) => {
@@ -165,11 +199,10 @@ const switch_worker_with_btn = (worker, room, container, btn) => {
     worker_div.querySelector(`#remove-worker-${worker.id}`)
         .addEventListener("click", (e) => {
             e.stopPropagation();
-            container.insertBefore(btn, worker_div);
-            worker_div.remove();
             worker.status = "unassigned";
             add_worker_to_list(worker);
             set_room_array(room, get_room_array(room).filter((w) => w.id !== worker.id));
+            load_room_workers(room, room_limits[room]);
             if (worker_list_arr.length === 0) no_worker_in_list.classList.add("hidden");
             worker_list_arr.push(worker);
             save();
@@ -185,11 +218,6 @@ const switch_worker_with_btn = (worker, room, container, btn) => {
 
 const add_worker_to_room = (worker, room) => {
     let room_arr = get_room_array(room);
-
-    let room_btns_container = document.querySelector(`.${room}-btns`);
-    let first_room_btn = room_btns_container.querySelector(".add-worker-btn");
-
-    switch_worker_with_btn(worker, room, room_btns_container, first_room_btn);
     worker_list.querySelector(`#worker-${worker.id}`).remove();
 
     if (worker_list_arr.length === 0) no_worker_in_list.classList.add("hidden");
@@ -202,12 +230,18 @@ const add_worker_to_room = (worker, room) => {
     worker.status = room;
     room_arr.push(worker);
     set_room_array(room, room_arr);
+    load_room_workers(room, room_limits[room]);
 };
 
 const load_room_workers = (room, limit) => {
     let room_btns_container = document.querySelector(`.${room}-btns`);
     room_btns_container.innerHTML = "";
     let room_arr = get_room_array(room);
+    let container = document.getElementById(`${room}`)
+    container.querySelector(".room-count").textContent = room_arr.length;
+
+    if (room_arr.length === 0) container.classList.add("bg-luffy-red", "bg-opacity-30");
+    else container.classList.remove("bg-luffy-red", "bg-opacity-30");
 
     for (let i = 0; i < limit; i++) {
         let room_btn = document.createElement("button");
@@ -225,7 +259,7 @@ const filter_workers = (search = "", role = "") => {
 
     if (search) filtered_workers = filtered_workers.filter(w => w.name.toLowerCase().includes(search.toLowerCase()));
     if (role) filtered_workers = filtered_workers.filter(w => w.role === (role === "all" ? w.role : role));
-    
+
     return filtered_workers;
 };
 
@@ -245,7 +279,7 @@ const randomize_workers_in_rooms = () => {
     do {
         let random_worker = worker_list_arr[Math.floor(Math.random() * worker_list_arr.length)];
         let random_room = "";
-        let accessible_rooms = available_rooms.filter( r => room_by_roles[r].includes(random_worker.role));
+        let accessible_rooms = available_rooms.filter(r => room_by_roles[r].includes(random_worker.role));
 
         if (accessible_rooms.length === 0) {
             let index = worker_list_arr.findIndex((w) => w.id === random_worker.id);
@@ -254,7 +288,7 @@ const randomize_workers_in_rooms = () => {
             continue;
         }
 
-        let empty_rooms = accessible_rooms.filter( r => get_room_array(r).length < room_limits[r]);
+        let empty_rooms = accessible_rooms.filter(r => get_room_array(r).length < room_limits[r]);
 
         if (empty_rooms.length === 0) {
             let index = worker_list_arr.findIndex((w) => w.id === random_worker.id);
@@ -282,12 +316,11 @@ const handle_drag_start = (e, worker, room = "") => {
         let length = get_room_array(r).length;
         room.classList.add("bg-opacity-30");
         if (room_by_roles[room.id].includes(worker.role) && length < room_limits[r]) {
-            room.classList.remove("bg-red-400");
-            room.classList.add("bg-green-400");
-        }
-        else {
-            room.classList.remove("bg-green-400");
-            room.classList.add("bg-red-400");
+            room.classList.remove("bg-luffy-red");
+            room.classList.add("bg-straw-gold");
+        } else {
+            room.classList.remove("bg-straw-gold");
+            room.classList.add("bg-luffy-red");
         }
     });
 };
@@ -296,9 +329,44 @@ const handle_drag_end = (e) => {
     e.preventDefault();
     available_rooms.forEach((r) => {
         let room = document.getElementById(r);
-        room.classList.remove("bg-green-400", "bg-red-400", "bg-opacity-30");
+        let room_arr = get_room_array(r);
+        room.classList.remove("bg-straw-gold", "bg-luffy-red", "bg-opacity-30");
+        if (room_arr.length === 0) room.classList.add("bg-luffy-red", "bg-opacity-30");
     });
 };
+
+const format_total_experiences = (total) => {
+    const years = parseInt(Math.floor(total / (1000 * 60 * 60 * 24 * 365)));
+    const months = parseInt(Math.floor((total % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)));
+    const days = parseInt(Math.floor((total % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+
+    return `${String(years).padStart(2, "0")} Years, ${String(months).padStart(2, "0")} Months, ${String(days).padStart(2, "0")} Days`;
+};
+
+const calculate_total_experiences = (worker) => {
+    let total_experiences = worker.experiences_arr.reduce((total, experience) => {
+        return total += new Date(experience.end_date) - new Date(experience.start_date);
+    }, 0);
+    return format_total_experiences(total_experiences);
+};
+
+const load_fake_data = () => {
+    if (worker_list_arr.length === 0) {
+        let all_arrays_are_empty = available_rooms.every(r => get_room_array(r).length === 0);
+
+        if (all_arrays_are_empty) {
+            localStorage.clear();
+            fakeData.forEach(w => {
+                w.total_experiences = calculate_total_experiences(w);
+            });
+            worker_list_arr = fakeData;
+            save();
+            load_worker_list();
+        }
+    }
+};
+
+load_fake_data();
 
 //Main Functions
 add_worker_btn.addEventListener("click", () => {
@@ -329,10 +397,30 @@ add_worker_form.addEventListener("submit", (e) => {
     if (!validate_leave_date(enter_date, leave_date, "leave_date_err")) return;
 
     const create_worker = (photo) => {
-        let { all_experiences_valid, experiences_arr } = validate_experiences("experience");
-    
+        let {
+            all_experiences_valid,
+            experiences_arr
+        } = validate_experiences("experience");
+
         if (all_experiences_valid) {
-            let worker = { id: Date.now(), name, age, role, email, phone, enter_date, leave_date, photo, experiences_arr, status: "unassigned"};
+            let worker = {
+                id: Date.now(),
+                name,
+                age,
+                role,
+                email,
+                phone,
+                enter_date,
+                leave_date,
+                photo,
+                experiences_arr,
+                status: "unassigned"
+            };
+            const total_experiences = calculate_total_experiences(worker);
+            worker = {
+                ...worker,
+                total_experiences
+            };
             worker_list_arr.push(worker);
             save();
             add_worker_modal.classList.replace("flex", "hidden");
@@ -347,7 +435,7 @@ add_worker_form.addEventListener("submit", (e) => {
         }
     }
 
-    if(!photo) {
+    if (!photo) {
         create_worker("https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg");
     } else {
         const tempImg = new Image();
@@ -364,9 +452,9 @@ close_add_worker_modal.addEventListener("click", () => {
     preview.classList.add("hidden");
     add_worker_form.reset();
     experiences.classList.replace("flex", "hidden");
-    document.querySelectorAll(".experience").forEach( e => e.remove() );
+    document.querySelectorAll(".experience").forEach(e => e.remove());
     document.querySelectorAll('p[id$="_err"]')
-        .forEach( e => {
+        .forEach(e => {
             e.classList.add("hidden");
             e.textContent = "";
         });
@@ -414,18 +502,34 @@ const edit_worker = (e, id) => {
     if (!validate_leave_date(enter_date, leave_date, "worker_leave_date_err")) return;
 
     const update_worker = (photo) => {
-        let { all_experiences_valid, experiences_arr } = validate_experiences("worker-experience");
+        let {
+            all_experiences_valid,
+            experiences_arr
+        } = validate_experiences("worker-experience");
 
         if (all_experiences_valid) {
             let worker = worker_list_arr.find((worker) => worker.id == id);
-            worker = { ...worker, name, age, role, email, phone, enter_date, leave_date, photo, experiences_arr};
+            let total_experiences = calculate_total_experiences(worker);
+            worker = {
+                ...worker,
+                name,
+                age,
+                role,
+                email,
+                phone,
+                enter_date,
+                leave_date,
+                photo,
+                experiences_arr,
+                total_experiences
+            };
             save();
             update_worker_list();
             document.getElementById("edit-worker-modal").remove();
         }
     }
 
-    if(!photo) {
+    if (!photo) {
         update_worker("https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg");
     } else {
         const tempImg = new Image();
@@ -465,7 +569,7 @@ const show_edit_worker_modal = (e, worker) => {
                         worker_experiences_container.classList.toggle("flex");
                         worker_experiences_container.classList.toggle("hidden");
                     }
-            });
+                });
         });
 
     let img = edit_worker_modal.querySelector("#worker-photo");

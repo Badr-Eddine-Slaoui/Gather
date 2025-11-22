@@ -6,8 +6,8 @@ The goal is to provide a smooth, intuitive, and responsive interface where emplo
 ---
 
 ## 🌐 Live Demo
-- **GitHub Pages:** _link_here_
-- **Vercel:** _link_here_
+- **GitHub Pages:** https://badr-eddine-slaoui.github.io/Gather/
+- **Vercel:** https://gather-theta-drab.vercel.app/
 
 ---
 
