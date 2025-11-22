@@ -348,11 +348,11 @@ add_worker_form.addEventListener("submit", (e) => {
     }
 
     if(!photo) {
-        create_worker("https://cdn-icons-png.flaticon.com/512/149/149071.png");
+        create_worker("https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg");
     } else {
         const tempImg = new Image();
         tempImg.src = photo;
-        tempImg.onerror = () => create_worker("https://cdn-icons-png.flaticon.com/512/149/149071.png");
+        tempImg.onerror = () => create_worker("https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg");
         tempImg.onload = () => create_worker(photo);
     }
 });
@@ -380,7 +380,7 @@ img.addEventListener("input", () => {
         preview.classList.add("hidden");
         return;
     }
-    preview.onerror = () => preview.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+    preview.onerror = () => preview.src = "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg";
 });
 
 load_worker_list();
@@ -426,11 +426,11 @@ const edit_worker = (e, id) => {
     }
 
     if(!photo) {
-        update_worker("https://cdn-icons-png.flaticon.com/512/149/149071.png");
+        update_worker("https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg");
     } else {
         const tempImg = new Image();
         tempImg.src = photo;
-        tempImg.onerror = () => update_worker("https://cdn-icons-png.flaticon.com/512/149/149071.png");
+        tempImg.onerror = () => update_worker("https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg");
         tempImg.onload = () => update_worker(photo);
     }
 }
@@ -478,7 +478,7 @@ const show_edit_worker_modal = (e, worker) => {
             preview.classList.add("hidden");
             return;
         }
-        preview.onerror = () => preview.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+        preview.onerror = () => preview.src = "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg";
     });
 
     document.body.appendChild(edit_worker_modal);

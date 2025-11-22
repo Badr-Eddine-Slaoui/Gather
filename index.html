@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gather</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css" />
 </head>
-<body class="bg-gray-500 overflow-x-hidden">
-    <div id="container" class="w-screen h-screen flex flex-col-reverse gap-y-5 lg:flex-row md:pe-5 md:justify-center md:items-center md:gap-x-5">
-        <div id="worker-list" class="w-full lg:w-[30%] xl:w-[25%] h-screen self-start overflow-y-scroll flex flex-col py-5 gap-y-5">
+
+<body class="bg-deck-wood overflow-x-hidden">
+    <div id="container"
+        class="w-screen h-screen flex flex-col-reverse justify-between gap-y-5 md:justify-center md:items-center md:gap-x-2 lg:flex-row lg:pe-2">
+        <div
+            class="w-full h-[70vh] bg-straw-gold border-e-4 border-pirate-gray 2xs:h-[65vh] xs:h-[62vh] sm:h-[50vh] lg:h-screen lg:w-[30%] xl:w-[25%] self-start flex flex-col py-5 gap-y-5">
             <div class="flex justify-around items-center">
-                <input placeholder="Search..." class="w-[60%] h:[3vh] p-1 text-[.8rem] transition-all duration-300 ease-in-out hover:scale-[1.02] focus:outline-none md:text-[1rem] md:p-2 md:h-[unset] xl:text-[1.2rem] xl:w-[70%] rounded-md xl:p-2" id="search" type="text">
-                <select class="w-[30%] h-[3.5vh] p-[5px] text-[.8rem] rounded-[4px] md:text-[1rem] md:p-2 md:h-[unset] xl:[1.2rem] xl:w-[25%] border border-slate-500 xl:rounded-md xl:p-2" name="role" id="filter">
+                <input placeholder="Search..."
+                    class="w-[60%] h:[3vh] bg-pirate-gray text-mist-white placeholder:text-mist-white p-1 text-[.8rem] transition-all duration-300 ease-in-out hover:scale-[1.02] focus:outline-none md:text-[1rem] md:p-2 md:h-[unset] xl:text-[1.2rem] xl:w-[70%] rounded-md xl:p-2"
+                    id="search" type="text" />
+                <select
+                    class="w-[30%] h-[3.5vh] bg-pirate-gray text-mist-white p-[5px] text-[.8rem] rounded-[4px] md:text-[1rem] md:p-2 md:h-[unset] xl:[1.2rem] xl:w-[25%] border border-slate-500 xl:rounded-md xl:p-2"
+                    name="role" id="filter">
                     <option value="all">All</option>
                     <option value="receptionist">Receptionist</option>
                     <option value="it">IT</option>
@@ -21,64 +29,83 @@
                     <option value="visiter">Visiter</option>
                 </select>
             </div>
-            <h1 class="text-[1.2rem] md:text-[1.5rem] xl:text-[2rem] font-extrabold text-white text-center">Workers List</h1>
+            <h1 class="text-[1.2rem] md:text-[1.5rem] xl:text-[2rem] font-extrabold text-mist-white text-center">
+                Workers List
+            </h1>
             <div class="w-10/12 mx-auto flex justify-around items-center">
-                <button id="add-worker-btn" class="w-5/12 py-2 text-[.8rem] rounded-[4px] bg-orange-400 transition-all duration-300 ease-in-out hover:bg-orange-600 hover:scale-[1.05] md:text-[1rem] md:py-2 lg:w-[45%] xl:w-[48%] xl:py-3 xl:text-[1.2rem] text-white font-bold xl:rounded-md">Add Worker</button>
-                <button id="randomize" class="w-5/12 py-2 text-[.8rem] rounded-[4px] bg-blue-400 transition-all duration-300 ease-in-out hover:bg-blue-600 hover:scale-[1.05] hover:shadow-inner md:text-[1rem] md:py-2 lg:w-[45%] xl:w-[48%] xl:py-3 xl:text-[1.2rem] text-white font-bold xl:rounded-md">Randomize</button>
+                <button id="add-worker-btn"
+                    class="w-5/12 py-2 text-[.8rem] rounded-[4px] bg-luffy-red transition-all duration-300 ease-in-out hover:bg-orange-600 hover:scale-[1.05] md:text-[1rem] md:py-2 lg:w-[45%] xl:w-[48%] xl:py-3 xl:text-[1.2rem] text-mist-white font-bold xl:rounded-md">
+                    Add Worker
+                </button>
+                <button id="randomize"
+                    class="w-5/12 py-2 text-[.8rem] rounded-[4px] bg-grand-line transition-all duration-300 ease-in-out hover:bg-sky-blue hover:scale-[1.05] hover:shadow-inner md:text-[1rem] md:py-2 lg:w-[45%] xl:w-[48%] xl:py-3 xl:text-[1.2rem] text-mist-white font-bold xl:rounded-md">
+                    Randomize
+                </button>
             </div>
-            <p id="no-worker-in-list" class="text-orange-400 text-center font-bold my-10 text-[1rem] xl:my-20 xl:text-[1.5rem] hidden">There's No Workers Yet</p>
+            <div id="worker-list"
+                class="w-full bg-straw-gold h-[80vh] self-start overflow-y-scroll flex flex-col items-center py-5 gap-y-5">
+                <p id="no-worker-in-list"
+                    class="text-luffy-red w-[90%] text-center font-extrabold my-10 text-[1rem] xl:my-20 xl:text-[1.5rem] hidden">
+                    There's No Unassigned Workers In The List Now
+                </p>
+            </div>
         </div>
-        <div id="plan" class="w-[95%] mx-auto mt-5 h-[30vh] 2xs:h-[40vh] 2xs:py-1 xs:h-[50vh] xs:py-2 xl:mx-0 sm:h-[90vh] md:w-[75%] lg:w-[70%] lg:h-[50vh] lg:mt-0 xl:w-[75%] xl:h-[85vh] bg-plan bg-contain bg-center bg-no-repeat xl:py-4 xl:px-2 gap-1 grid grid-cols-[repeat(22,1fr)] grid-rows-3">
-            <div id="meeting-room" class="col-span-8 flex justify-center items-center">
-                <div class="meeting-room-btns rooms grid grid-cols-3 grid-row-2 gap-4 xl:gap-10">
-                    
-                </div>
+        <div id="plan"
+            class="w-[95%] mx-auto mt-5 h-[23vh] gap-1 grid grid-cols-45 grid-rows-18 2xs:h-[27vh] 2xs:py-1 xs:h-[31vh] xs:py-2 xl:mx-0 sm:w-[90%] sm:h-[50vh] md:w-[75%] md:h-[52vh] lg:w-[70%] lg:h-[55vh] lg:mt-0 xl:w-[75%] xl:h-[95vh] bg-plan bg-contain bg-center bg-no-repeat xl:py-4 xl:px-2">
+            <div id="meeting-room" class="col-start-1 col-end-[17] row-start-1 row-end-8 flex justify-center items-center">
+                <div class="meeting-room-btns rooms grid grid-cols-2 grid-row-3 gap-1 2xs:gap-2 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10"></div>
             </div>
-            <div id="servers-room" class="col-start-13 col-end-[18] flex justify-center items-center">
-                <div class="servers-room-btns rooms grid grid-cols-2 grid-row-2 gap-4 xl:gap-10">
-                    
-                </div>
+            <div id="servers-room" class="col-start-[26] col-end-[36] row-start-1 row-end-7 flex justify-center items-center">
+                <div class="servers-room-btns rooms grid grid-cols-2 grid-row-2 gap-1 2xs:gap-2 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10"></div>
             </div>
-            <div id="security-room" class="col-start-[18] col-end-[23] flex justify-center items-center">
-                <div class="security-room-btns rooms">
-                    
-                </div>
+            <div id="security-room" class="col-start-[36] col-end-[46] row-start-1 row-end-7 flex justify-center items-center">
+                <div class="security-room-btns rooms"></div>
             </div>
-            <div id="reception-room" class="row-span-2 col-span-8 flex justify-center items-center">
-                <div class="reception-room-btns rooms grid grid-cols-3 grid-row-2 gap-4 xl:gap-10">
-                    
-                </div>
+            <div id="reception-room" class="col-start-1 col-end-[17] row-start-8 row-end-[19] flex justify-center items-center">
+                <div class="reception-room-btns rooms grid grid-cols-2 grid-row-3 gap-1 2xs:gap-2 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10"></div>
             </div>
-            <div id="rest-room" class="row-start-3 col-start-13 col-end-[18] flex justify-center items-center">
-                <div class="rest-room-btns rooms grid grid-cols-2 grid-row-1 gap-4 xl:gap-10">
-                    
-                </div>
+            <div id="rest-room" class="col-start-[26] col-end-[37] row-start-11 row-end-[19] flex justify-center items-center">
+                <div class="rest-room-btns rooms grid grid-cols-1 grid-row-2 gap-1 2xs:gap-2 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10"></div>
             </div>
-            <div id="archive-room" class="row-start-3 col-start-[18] col-end-[23] flex justify-center items-center">
-                <div class="archive-room-btns rooms grid grid-cols-2 grid-row-1 gap-4 xl:gap-10">
-                    
-                </div>
+            <div id="archive-room" class="col-start-[37] col-end-[46] row-start-11 row-end-[19] flex justify-center items-center">
+                <div class="archive-room-btns rooms grid grid-cols-1 grid-row-2 gap-1 2xs:gap-2 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10"></div>
             </div>
         </div>
     </div>
-    <div class="w-screen h-screen bg-black absolute top-0 left-0 bg-opacity-60 justify-center items-center hidden" id="add-worker-modal">
-        <div class="modal w-[90%] h-[80vh] sm:w-[80%] lg:w-[60%] xl:w-1/2 xl:h-[90vh] bg-white rounded-lg relative">
-            <div id="close-modal" class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-400 text-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">x</div>
-            <h1 class="text-[1.5rem] my-5 md:text-[2rem] xl:text-[3rem] xl:my-10 font-extrabold text-orange-400 text-center">Add Worker</h1>
-            <form id="add-worker-form" class="w-full h-[65vh] xl:h-[70vh] flex items-center flex-col gap-5 overflow-y-scroll">
+    <div class="w-screen h-screen bg-black absolute top-0 left-0 bg-opacity-60 justify-center items-center hidden"
+        id="add-worker-modal">
+        <div
+            class="modal w-[90%] h-[80vh] sm:w-[80%] lg:w-[60%] xl:w-1/2 xl:h-[90vh] bg-pirate-gray rounded-lg relative">
+            <div id="close-modal"
+                class="absolute top-1 right-1 rounded-[3px] text-[.6rem] w-[2vh] h-[2vh] sm:w-[3vh] sm:h-[3vh] sm:text-[.8rem] sm:rounded-[4px] md:w-[3.5vh] md:h-[3.5vh] md:text-[1rem] md:rounded-md xl:rounded-lg xl:w-[5vh] xl:h-[5vh] bg-red-400 text-mist-white flex justify-center items-center font-extrabold xl:text-[1.5rem] cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.05] hover:bg-red-600">
+                x
+            </div>
+            <h1
+                class="text-[1.5rem] my-5 md:text-[2rem] xl:text-[3rem] xl:my-10 font-extrabold text-luffy-red text-center">
+                Add Worker
+            </h1>
+            <form id="add-worker-form"
+                class="w-full h-[65vh] xl:h-[70vh] flex items-center flex-col gap-5 overflow-y-scroll">
                 <div class="w-[90%] flex flex-col gap-y-2">
-                    <label for="name" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-slate-500">Name:</label>
-                    <input type="text" name="name" id="name" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
-                    <p id="name_err" class="text-red-500 text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
+                    <label for="name"
+                        class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Name:</label>
+                    <input type="text" name="name" id="name"
+                        class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2" />
+                    <p id="name_err" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
                 </div>
                 <div class="w-[90%] flex flex-col gap-y-2">
-                    <label for="age" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-slate-500">Age:</label>
-                    <input type="text" name="age" id="age" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
-                    <p id="age_err" class="text-red-500 text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
+                    <label for="age"
+                        class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Age:</label>
+                    <input type="text" name="age" id="age"
+                        class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2" />
+                    <p id="age_err" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
                 </div>
                 <div class="w-[90%] flex flex-col gap-y-2">
-                    <label for="role" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-slate-500">Role:</label>
-                    <select class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2" name="role" id="role">
+                    <label for="role"
+                        class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Role:</label>
+                    <select
+                        class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2"
+                        name="role" id="role">
                         <option value="">--Choose role--</option>
                         <option value="receptionist">Receptionist</option>
                         <option value="it">IT</option>
@@ -87,45 +114,71 @@
                         <option value="cleaner">Cleaner</option>
                         <option value="visiter">Visiter</option>
                     </select>
-                    <p id="role_err" class="text-red-500 text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
+                    <p id="role_err" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
                 </div>
                 <div class="w-[90%] flex flex-col gap-y-2">
-                    <label for="photo" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-slate-500">Photo (URL):</label>
-                    <input type="text" name="photo" id="photo" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
+                    <label for="photo"
+                        class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Photo
+                        (URL):</label>
+                    <input type="text" name="photo" id="photo"
+                        class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2" />
                 </div>
                 <div class="w-[90%] flex justify-center items-center">
-                    <img id="img-preview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Preview" class="w-[20vh] h-[20vh] rounded-full hidden">
+                    <img id="img-preview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Preview"
+                        class="w-[20vh] h-[20vh] rounded-full hidden" />
                 </div>
                 <div class="w-[90%] flex flex-col gap-y-2">
-                    <label for="email" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-slate-500">Email:</label>
-                    <input type="email" name="email" id="email" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
-                    <p id="email_err" class="text-red-500 text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
+                    <label for="email"
+                        class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Email:</label>
+                    <input type="email" name="email" id="email"
+                        class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2" />
+                    <p id="email_err" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
                 </div>
                 <div class="w-[90%] flex flex-col gap-y-2">
-                    <label for="phone" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-slate-500">Phone:</label>
-                    <input type="tel" name="phone" id="phone" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
-                    <p id="phone_err" class="text-red-500 text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
+                    <label for="phone"
+                        class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Phone:</label>
+                    <input type="tel" name="phone" id="phone"
+                        class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2" />
+                    <p id="phone_err" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
                 </div>
                 <div class="w-[90%] flex flex-col gap-y-2">
-                    <label for="enter_date" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-slate-500">Enter Date:</label>
-                    <input type="datetime-local" name="enter_date" id="enter_date" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
-                    <p id="enter_date_err" class="text-red-500 text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
+                    <label for="enter_date"
+                        class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Enter
+                        Date:</label>
+                    <input type="datetime-local" name="enter_date" id="enter_date"
+                        class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2" />
+                    <p id="enter_date_err" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden">
+                    </p>
                 </div>
                 <div class="w-[90%] flex flex-col gap-y-2">
-                    <label for="leave_date" class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-slate-500">Leave Date:</label>
-                    <input type="datetime-local" name="leave_date" id="leave_date" class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2">
-                    <p id="leave_date_err" class="text-red-500 text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden"></p>
+                    <label for="leave_date"
+                        class="text-[.8rem] md:text-[1rem] xl:text-[1.2rem] font-bold text-straw-gold">Leave
+                        Date:</label>
+                    <input type="datetime-local" name="leave_date" id="leave_date"
+                        class="text-[.8rem] py-1 px-2 md:text-[1rem] md:py-2 xl:text-[1.2rem] border border-slate-500 rounded-md xl:p-2" />
+                    <p id="leave_date_err" class="text-luffy-red text-[.8rem] md:text-[1rem] xl:text-[1.2rem] hidden">
+                    </p>
                 </div>
                 <div id="experiences" class="w-[90%] border-t border-slate-500 flex-col gap-y-5 hidden">
-                    <h2 class="text-[1.2rem] my-5 md:text-[1.5rem] xl:text-[2rem] xl:mt-10 xl:mb-5 font-extrabold text-orange-400 text-center">Experiences</h2>
+                    <h2
+                        class="text-[1.2rem] my-5 md:text-[1.5rem] xl:text-[2rem] xl:mt-10 xl:mb-5 font-extrabold text-luffy-red text-center">
+                        Experiences
+                    </h2>
                 </div>
                 <div class="w-[90%] flex justify-between items-center">
-                    <button id="add-experience-btn" type="button" class="bg-orange-400 py-2 px-3 text-[.8rem] rounded-[4px] md:text-[1rem] xl:py-3 xl:px-5 xl:text-[1.2rem] text-white font-bold xl:rounded-md transition-all duration-300 ease-in-out hover:bg-orange-600 hover:scale-[1.05]">Add Experience</button>
-                    <button type="submit" class="bg-blue-400 py-2 px-3 text-[.8rem] rounded-[4px] md:text-[1rem] xl:py-3 xl:px-5 xl:text-[1.2rem] text-white font-bold xl:rounded-md transition-all duration-300 ease-in-out hover:bg-blue-600 hover:scale-[1.05]">Submit</button>
+                    <button id="add-experience-btn" type="button"
+                        class="bg-luffy-red py-2 px-3 text-[.8rem] rounded-[4px] md:text-[1rem] xl:py-3 xl:px-5 xl:text-[1.2rem] text-mist-white font-bold xl:rounded-md transition-all duration-300 ease-in-out hover:bg-orange-600 hover:scale-[1.05]">
+                        Add Experience
+                    </button>
+                    <button type="submit"
+                        class="bg-grand-line py-2 px-3 text-[.8rem] rounded-[4px] md:text-[1rem] xl:py-3 xl:px-5 xl:text-[1.2rem] text-mist-white font-bold xl:rounded-md transition-all duration-300 ease-in-out hover:bg-sky-blue hover:scale-[1.05]">
+                        Submit
+                    </button>
                 </div>
             </form>
         </div>
     </div>
     <script type="module" src="./scripts/script.js"></script>
 </body>
+
 </html>

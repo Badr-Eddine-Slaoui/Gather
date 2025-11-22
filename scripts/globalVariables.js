@@ -60,7 +60,7 @@ export let fakeData = [
         phone: "0612345678",
         enter_date: "2025-10-01T09:00",
         leave_date: "2026-04-01T17:00",
-        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        photo: "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg",
         status: "unassigned",
         experiences_arr: [
             {
@@ -80,7 +80,7 @@ export let fakeData = [
         phone: "0678994411",
         enter_date: "2025-09-12T10:00",
         leave_date: "2026-05-02T18:00",
-        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        photo: "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg",
         status: "unassigned",
         experiences_arr: [
             {
@@ -100,7 +100,7 @@ export let fakeData = [
         phone: "0700112233",
         enter_date: "2025-09-01T08:00",
         leave_date: "2025-12-20T16:00",
-        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        photo: "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg",
         status: "unassigned",
         experiences_arr: [
             {
@@ -120,7 +120,7 @@ export let fakeData = [
         phone: "0677445566",
         enter_date: "2025-03-01T06:00",
         leave_date: "2025-12-01T14:00",
-        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        photo: "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg",
         status: "unassigned",
         experiences_arr: [
             {
@@ -140,7 +140,7 @@ export let fakeData = [
         phone: "0622113344",
         enter_date: "2025-04-20T07:00",
         leave_date: "2026-01-01T14:00",
-        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        photo: "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg",
         status: "unassigned",
         experiences_arr: [
             {
@@ -160,7 +160,7 @@ export let fakeData = [
         phone: "0699887766",
         enter_date: "2025-07-01T09:00",
         leave_date: "2026-02-01T17:00",
-        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        photo: "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg",
         status: "unassigned",
         experiences_arr: [
             {
@@ -186,7 +186,7 @@ export let fakeData = [
         phone: "0655443322",
         enter_date: "2025-11-10T14:00",
         leave_date: "2025-11-10T17:00",
-        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        photo: "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg",
         status: "unassigned",
         experiences_arr: [],
     },
@@ -199,7 +199,7 @@ export let fakeData = [
         phone: "0700332211",
         enter_date: "2025-09-15T08:00",
         leave_date: "2026-01-10T17:00",
-        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        photo: "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg",
         status: "unassigned",
         experiences_arr: [
             {
@@ -219,7 +219,7 @@ export let fakeData = [
         phone: "0644332211",
         enter_date: "2025-01-05T07:00",
         leave_date: "2025-08-28T15:00",
-        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        photo: "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg",
         status: "unassigned",
         experiences_arr: [
             {
@@ -239,7 +239,7 @@ export let fakeData = [
         phone: "0644556677",
         enter_date: "2025-01-05T07:00",
         leave_date: "2025-11-28T15:00",
-        photo: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        photo: "https://wallpapers.com/images/hd/straw-hat-pirates-0tmsc0p43nkng9rj.jpg",
         status: "unassigned",
         experiences_arr: [
             {
