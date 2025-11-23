@@ -361,7 +361,6 @@ const load_fake_data = () => {
             });
             worker_list_arr = fakeData;
             save();
-            load_worker_list();
         }
     }
 };
