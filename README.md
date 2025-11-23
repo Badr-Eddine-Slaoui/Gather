@@ -1,12 +1,12 @@
-# WorkSphere — Visual & Interactive Staff Management
+# StrawHatsGather — Visual & Interactive Staff Management
 
-WorkSphere is a modern web application designed to manage workplace personnel directly on an interactive floor map.  
+StrawHatsGather is a modern web application designed to manage workplace personnel directly on an interactive floor map, inspired by the popular anime One Piece.  
 The goal is to provide a smooth, intuitive, and responsive interface where employees can be added, assigned to zones, moved, or removed in real-time while respecting business rules related to their roles.
 
 ---
 
 ## 🌐 Live Demo
-- **GitHub Pages:** https://badr-eddine-slaoui.github.io/Gather/
+- **GitHub Pages:** https://badr-eddine-slaoui.github.io/StrawHatsGather/
 - **Vercel:** https://gather-theta-drab.vercel.app/
 
 ---
@@ -89,8 +89,8 @@ The goal is to provide a smooth, intuitive, and responsive interface where emplo
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/your-username/worksphere.git
-cd worksphere
+git clone https://github.com/Badr-Eddine-Slaoui/StrawHatsGather.git
+cd StrawHatsGather
 ```
 
 ### 2️⃣ Install dependencies
