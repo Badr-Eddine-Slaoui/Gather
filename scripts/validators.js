@@ -86,7 +86,7 @@ export const validate_email = (email, id) => {
 
 export const validate_phone = (phone, id) => {
   let phone_err = document.getElementById(id);
-  let phone_regex = /^[0-9]{10}$/;
+  let phone_regex = /^(\+212|0)(5|6|7|8)[0-9]{8}$/;
   if (!phone) {
     phone_err.classList.remove("hidden");
     phone_err.textContent = "Phone is required";
