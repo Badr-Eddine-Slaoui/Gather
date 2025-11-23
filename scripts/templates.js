@@ -306,9 +306,9 @@ export const available_workers = (workers) => {
                         `;
                 })
                 .join("")
-            : ` < div class = "w-[90%] mx-auto text-center h-[8vh] text-[1.2rem] my-5 md:text-[1.5rem] xl:h-[10vh] flex justify-center items-center xl:my-10 xl:text-[2rem] font-extrabold text-luffy-red" > There 's No Available Workers For This Room Now </div>`
-    } < /div>  <
-    /div>
+            : ` <div class="w-[90%] mx-auto text-center h-[8vh] text-[1.2rem] my-5 md:text-[1.5rem] xl:h-[10vh] flex justify-center items-center xl:my-10 xl:text-[2rem] font-extrabold text-luffy-red"> There 's No Available Workers For This Room Now </div>`
+    }</div>  
+    </div>
 `;
 };
 
