@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+*{
+    font-family: "Pirata One", system-ui !important;
+    letter-spacing: 1.5px;
+}
 
 
 *::-webkit-scrollbar{
